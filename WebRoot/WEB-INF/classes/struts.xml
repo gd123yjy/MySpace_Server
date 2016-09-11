@@ -6,18 +6,18 @@
 	<package name="user"  extends="struts-default">
 		<action name="login" class="loginAction">
 			<result name="success" type="redirectAction">listJournal</result>
-			<result name="input">/wellcome.jsp</result>
+			<result name="input">/welcome.jsp</result>
 		</action>
 		<action name="saveNote" class="saveNoteAction">
 			<result name="success" type="redirectAction">showArticle?article_id=${article_id}&amp;chapter_id=${chapter_id}</result>
-			<result name="input">/wellcome.jsp</result>
+			<result name="input">/welcome.jsp</result>
 		</action>
 		<action name="logout" class="logoutAction">
-			<result name="success">/wellcome.jsp</result>
+			<result name="success">/welcome.jsp</result>
 		</action>
 		<action name="enroll" class="enrollAction">
 			<result name="success" type="redirectAction">listJournal</result>
-			<result name="input">/wellcome.jsp</result>
+			<result name="input">/welcome.jsp</result>
 		</action>
 		<action name="userManage" class="userManageAction">
 			<result name="success">/user.jsp</result>
@@ -58,15 +58,15 @@
 		</action>
 		<action name="addParagraph" class="addParagraphAction">
 			<result name="success" type="redirectAction">showArticle?article_id=${article_id}&amp;chapter_id=${chapter_id}</result>
-			<result name="input">/wellcome.jsp</result>
+			<result name="input">/welcome.jsp</result>
 		</action>
 		<action name="modifyParagraph" class="modifyParagraphAction">
 			<result name="success" type="redirectAction">userManage</result>
-			<result name="input">/wellcome.jsp</result>
+			<result name="input">/welcome.jsp</result>
 		</action>
 		<action name="deleteParagraph" class="deleteParagraphAction">
 			<result name="success" type="redirectAction">userManage</result>
-			<result name="input">/wellcome.jsp</result>
+			<result name="input">/welcome.jsp</result>
 		</action>
 	</package>
 </struts>    

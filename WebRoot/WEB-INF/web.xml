@@ -26,6 +26,6 @@
 </filter-mapping>
 
 <welcome-file-list>
-	<welcome-file>wellcome.jsp</welcome-file>
+	<welcome-file>welcome.jsp</welcome-file>
 </welcome-file-list>
 </web-app>

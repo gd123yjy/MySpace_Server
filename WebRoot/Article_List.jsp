@@ -62,7 +62,7 @@
 			    	<h5 style="float:right;">Welcome Back! <a href="userManage.action"><s:property value="#session.username"></s:property></a><a href="logout.action">&emsp;log out</a></h5><br>
 			    </s:if>
 			    <s:else>
-			    	<h5 style="float:right;"><a href="wellcome.jsp">&emsp;log in</a></h5><br>
+			    	<h5 style="float:right;"><a href="welcome.jsp">&emsp;log in</a></h5><br>
 			    </s:else>
 			    
 				<h1>Article <span>Wanted!</span></h1>
@@ -255,7 +255,7 @@
 						<td align="center"><img class="submenuimg" border="0" src="images/warning.png" /><td>
 					</tr>
 					<tr>
-						<td align="center"><h4>确定删除当前杂志？<h4></td>
+						<td align="center"><h4>确定删除当前杂志？</h4></td>
 					</tr>
 					<tr>
 						<td align="center">

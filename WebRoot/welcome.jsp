@@ -119,7 +119,7 @@
 	  		<button type="submit" class="btn btn-primary">Submit</button>
 	 		 <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Quit</button>
 	  	</div>
-	  	<form>
+	  	</form>
   	</div>
         
         

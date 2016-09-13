@@ -186,7 +186,7 @@
 		
 		<!--编辑文章标题简介窗口-->
 		<div class="float-news" id="float-edit-windows" style="left:-450px; top:75px; width:280px;height:525px">
-			<a class="float-close" id="float-close" style="background:url(images/x.png) no-repeat;background-size:100% 100%;" href="javascript:menu_close('float-edit-windows','float-new')">X</a>
+			<a class="float-close" id="float-close-edit-windows" style="background:url(images/x.png) no-repeat;background-size:100% 100%;" href="javascript:menu_close('float-edit-windows','float-new')">X</a>
 				<input id="article_id" style="display:none"  value=""/><!--放文章编号-->
 				<input id="chapter_number" style="display:none"  value=""/><!--放文章章节数-->
 				<div class="newslist">
@@ -222,7 +222,7 @@
 		<div class="float-news" id="float-edit" style="left:-600px; top:100px; width:400px;height:450px">
 			<!--需要设置当前文章数-->
 			<input id="current_article_number" style="display:none" value='${request.article_list.size()}'/>
-			<a class="float-close" id="float-close-edit" style="background:url(images/x.png) no-repeat;background-size:100% 100%;" href="javascript:void(0);">X</a>
+			<a class="float-close" id="float-close-edit-menu" style="background:url(images/x.png) no-repeat;background-size:100% 100%;" href="javascript:void(0);">X</a>
 			<div class="newslist">
 				<h3>编辑文章信息</h3>
 				请选择要编辑的文章

@@ -24,6 +24,11 @@
 		menu_open("float-news2","float-new-set");
 		return false;
 	});
+	//编辑杂志
+	$('#float-close-edit-menu').click(function(){
+		menu_close("float-edit","float-news2");
+		return false;
+	});
 	//章节设置
 	$('#float-close-new').click(function(){
 		menu_close("float-new","float-new-set");

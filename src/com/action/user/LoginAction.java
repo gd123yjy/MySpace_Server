@@ -41,7 +41,7 @@ public class LoginAction extends ActionSupport {
 			return SUCCESS;
 		}
 		else {
-			addFieldError("message", "用户名或密码错误");
+			addFieldError("message", "??????????????");
 			return INPUT;
 		}
 	}

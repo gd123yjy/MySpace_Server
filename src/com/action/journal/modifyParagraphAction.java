@@ -43,6 +43,14 @@ public class modifyParagraphAction extends ActionSupport {
 		Map session = (Map) ActionContext.getContext().get("session");
 		Integer userid = (Integer)session.get("userid");
  		Paragraph paragraph = service.find_paragraph_by_paragraph_id(paragraph_id);
+		if (paragraph==null){
+			addFieldError("message", "找不到您要修改的段落！");
+			return ERROR;
+		}
+		if (userid == null){
+			addFieldError("message", "您尚未登陆！");
+			return ERROR;
+		}
  		if (userid != paragraph.getUser().getUserid()) {
  			addFieldError("message", "这段东西又不是你写的，不能改它！");
  			return INPUT;

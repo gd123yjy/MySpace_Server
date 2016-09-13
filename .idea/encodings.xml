@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/action/journal/AddParagraph.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/action/journal/modifyParagraphAction.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/action/user/EnrollAction.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/action/user/LoginAction.java" charset="UTF-8" />
   </component>
 </project>

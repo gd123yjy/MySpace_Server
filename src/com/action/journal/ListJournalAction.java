@@ -34,13 +34,20 @@ public class ListJournalAction extends ActionSupport {
 		Map request = (Map) ActionContext.getContext().get("request");
 		List journal_list = service.find_all();
 		request.put("journal_list", journal_list);
-		if (journal_id == null) {
-			journal_id = (Integer)((Object[])journal_list.get(0))[0];
+		List article_list = null;
+		if (journal_list.size()==0){
+			journal_id = 0;
+			request.put("article_list", article_list);
+		}else {
+			if (journal_id == null) {
+				journal_id = (Integer)((Object[])journal_list.get(0))[0];
+			}
+			request.put("journal_id", journal_id);
+			article_list = service.find_article_of_journal(journal_id);
+			//System.out.println(article_list.get(0));
+			request.put("article_list", article_list);
 		}
-		request.put("journal_id", journal_id);
-		List article_list = service.find_article_of_journal(journal_id);
-		//System.out.println(article_list.get(0));
-		request.put("article_list", article_list);
+
 		/*
 		request.put("journal_list", service.find_all_title());
 		if (journal_id == null) {

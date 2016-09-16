@@ -49,7 +49,7 @@ public class EnrollAction extends ActionSupport {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public String execute() throws Exception {

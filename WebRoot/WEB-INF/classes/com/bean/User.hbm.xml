@@ -24,7 +24,7 @@
 			<column name="admin" not-null="false"></column>
 		</property>
 		<set name="paragraphs" inverse="true" cascade="all">
-			<key column="user_id"></key>
+			<key column="userid"></key>
 			<one-to-many class="com.bean.Paragraph"></one-to-many>
 		</set>
 	</class>

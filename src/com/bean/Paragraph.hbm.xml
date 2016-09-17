@@ -8,8 +8,8 @@
 			<column name="paragraph_id"></column>
 			<generator class="identity"></generator>
 		</id>
-		<property name="sequence" type="java.lang.Integer">
-			<column name="sequence" not-null="true"></column>
+		<property name="sequence" type="java.lang.Integer" unique-key="sequence_chapter">
+            <column name="sequence" not-null="true"></column>
 		</property>
 		<property name="content" type="java.lang.String">
 			<column name="content" length="500" not-null="false"></column>
@@ -20,11 +20,11 @@
 		<property name="score_num" type="java.lang.Integer">
 			<column name="score_num" not-null="false"></column>
 		</property>
-		
+
 		<many-to-one name="chapter" class="com.bean.Chapter"
-		column="chapter_id" not-null="true" cascade="all"></many-to-one>
+		column="chapter_id" not-null="true" cascade="all" unique-key="sequence_chapter"></many-to-one>
 		<many-to-one name="user" class="com.bean.User"
 		column="userid" not-null="true" cascade="none"></many-to-one>
-		
+
 	</class>
 </hibernate-mapping>

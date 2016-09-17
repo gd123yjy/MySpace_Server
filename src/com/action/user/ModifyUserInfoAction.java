@@ -61,11 +61,11 @@ public class ModifyUserInfoAction extends ActionSupport {
 	public String execute() throws Exception {
 		Map session = ActionContext.getContext().getSession();
 		if (service.checkUser((String)session.get("username"), confirm_password)) {
-			addFieldError("message", "¾ÉÃÜÂë´ò´íÁË£¡");
+			addFieldError("message", "æ—§å¯†ç æ‰“é”™äº†ï¼");
 			return INPUT;
 		}
 		if (service.usernameExsit(username)) {
-			addFieldError("message", "ÓÃ»§ÃûÔç¾Í±»ÈË¼ÒÓÃÁË£¡");
+			addFieldError("message", "ç”¨æˆ·åæ—©å°±è¢«äººå®¶ç”¨äº†ï¼");
 			return INPUT;
 		}
 		User user = service.find_user_by_userid((Integer)session.get("userid"));

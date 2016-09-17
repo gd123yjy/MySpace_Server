@@ -19,6 +19,7 @@
             <div align="center">
                 <button type="submit" class="btn">Submit</button>
                 <a href="deleteParagraph.action?paragraph_id=${request.paragraph_id }"><button type="button" class="btn">delete</button></a>
+                <a href="userManage.action" class="btn">back</a>
     		</div>
         </form>
     </div>

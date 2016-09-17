@@ -29,7 +29,7 @@
 
     <div class="page-header">
         <div class="text-success">
-            <h1 align="center">My Space
+            <h1 align="center"><s:a style="text-decoration:none;" action="listJournal">My Space</s:a>
                 <small><em>user management web</em></small>
             </h1>
         </div>
@@ -48,8 +48,9 @@
         <div class="tab-content">
             <div class="tab-pane active" id="tab1">
                 <p class="text-info">用户笔记</p>
-                <textarea rows="5" cols="100" id="note" style="overflow: auto;"><s:property
-                        value="#request.note"></s:property></textarea>
+                <text rows="5" cols="100" id="note" style="overflow: auto;">
+                    <s:property value="#request.note"></s:property>
+                </text>
             </div>
 
             <div class="tab-pane" id="tab2">
@@ -75,7 +76,7 @@
                                 <td>
                                     <s:a href="showParagraph.action?paragraph_id=%{#paragraph[4]}&journal_title=%{#paragraph[0]}&article_title=%{#paragraph[1]}&chapter_title=%{#paragraph[2]}&sequence=%{#paragraph[3]}">
                                         <!--段落-->
-                                        <s:property value="#paragraph[3]"></s:property>
+                                        <s:property value="#paragraph[3]+1"></s:property>
                                     </s:a>
                                 </td>
                             </tr>

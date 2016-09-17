@@ -193,10 +193,10 @@
 					<h3>文章详情</h3>
 					<table>
 						<tr>
-							<td>标题：<input id="article_edit_title" type="text" style="width:200px"></td>
+							<td>标题(20字以内)：<input id="article_edit_title" type="text" style="width:200px"></td>
 						</tr>
 						<tr>
-							<td>描述：</td>
+							<td>描述(20字以内)：</td>
 						</tr>
 						<tr>
 							<td align="right"><textarea id="article_edit_content" rows="3" cols="30"></textarea><td>

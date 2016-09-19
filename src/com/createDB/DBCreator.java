@@ -44,5 +44,6 @@ public class DBCreator {
         if (session.isOpen()){
             session.close();
         }
+        return;
     }
 }

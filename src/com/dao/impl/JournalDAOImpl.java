@@ -69,6 +69,7 @@ public class JournalDAOImpl implements JournalDAO {
 	public List<List<Paragraph>> find_paragraph_of_chapter(Integer chapter_id) {
 		Session session = sessionFactory.openSession();
 		List<List<Paragraph>> res = new ArrayList<List<Paragraph>>();
+
 		String hql = "select max(sequence) from Paragraph paragraph where chapter_id = " + chapter_id;
 		Query query = session.createQuery(hql);
 		Integer max_sequence = (Integer)query.uniqueResult();
@@ -76,9 +77,10 @@ public class JournalDAOImpl implements JournalDAO {
 			session.close();
 			return null;
 		}
-		
-		
+
+		//得到res[所有段落][该段落排名前3+随机2]
 		for (int i = 0; i <= max_sequence; ++i) {
+			//在众多版本的段落i中获得大众评分最高分的前三个，纳入最终结果
 			hql = "from Paragraph paragraph where chapter_id = :chapter_id and sequence = :sequence order by paragraph.score desc";
 			query = session.createQuery(hql);
 			query.setInteger("chapter_id", chapter_id);
@@ -86,6 +88,8 @@ public class JournalDAOImpl implements JournalDAO {
 			query.setFirstResult(0);
 			query.setMaxResults(3);
 			List<Paragraph> high_score_paragraphs = query.list();
+
+			//在众多版本的段落i中获得随机5个
 			hql = "from Paragraph paragraph where chapter_id = :chapter_id and sequence = :sequence order by rand()";
 			query = session.createQuery(hql);
 			query.setInteger("chapter_id", chapter_id);
@@ -93,6 +97,8 @@ public class JournalDAOImpl implements JournalDAO {
 			query.setFirstResult(0);
 			query.setMaxResults(5);
 			List<Paragraph> random_score_paragraphs = query.list();
+
+			//从随机到的5个中取出2个加入到最终结果中
 			int count = 0;
 			for (int j = 0; count < 2 && j < random_score_paragraphs.size(); ++j) {
 				boolean isDuplicate = false;
@@ -109,6 +115,7 @@ public class JournalDAOImpl implements JournalDAO {
 			}
 			res.add(high_score_paragraphs);
 		}
+
 		session.close();
 		return res;
 	}

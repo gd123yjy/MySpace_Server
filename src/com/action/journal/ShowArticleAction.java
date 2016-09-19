@@ -53,6 +53,8 @@ public class ShowArticleAction extends ActionSupport {
 		request.put("chapter_list", chapter_list);
 		
 		if(chapter_id == null) {
+			//类似于chapter_id = ((Chapter)chapter_list.get(0)).getChapter_id();
+			//但不是等价于
 			chapter_id = (Integer)((Object[])chapter_list.get(0))[0];
 		}
 		request.put("paragraph_list", service.find_paragraph_of_article(chapter_id));

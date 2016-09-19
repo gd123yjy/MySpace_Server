@@ -399,7 +399,8 @@
             <div class="banner_pic">
                 <ul>
                     <s:iterator value="#request.paragraph_list.get(0)" id="paragraph" status="st">
-                        <li><a href="#"><img width="630" height="210" src="images/pic_0x${st.index + 1}.jpg"
+                        <li><a href="#"><img width="630" height="210" src="images/pic_0${st.index + 1}.jpg"
+                                             title="<s:property value="#paragraph.content"/>"
                                              alt="<s:property value="#paragraph.content"/>"/></a></li>
                         <input type="text" style="display: none;" value="<s:property value="#paragraph.paragraph_id"/>">
                     </s:iterator>
@@ -429,7 +430,7 @@
             <div class="banner_info">
                 <ul>
                     <li>
-                        <h4><a href="#">快乐的旅程，参观武汉可口可乐饮料有限公司</a></h4>
+                        <h4><a href="#">${paragraph_list[0][0].content}</a></h4>
                         <div class="ext" id="starInfo00"/>
                     </li>
                     <li>
@@ -458,6 +459,17 @@
         </div><!--banner end-->
 
     </section>
+
+    <section>
+        <div class="banner_pic">
+            <img width="630" height="210" src=""/>
+        </div>
+        <div class="banner_info">
+            <div class="ext"/>
+        </div>
+        <div class="banner_count">1</div>
+    </section>
+
     <section id="about">
         <div class="banner" id="kakaFocus2">
             <a class="btn_prev" title="上一个" href="#">Previous</a>
@@ -466,6 +478,7 @@
                 <ul>
                     <s:iterator value="#request.paragraph_list.get(1)" id="paragraph" status="st">
                         <li><a href="#"><img width="630" height="210" src="images/pic_0x${st.index + 1}.jpg"
+                                             title="<s:property value="#paragraph.content"/>"
                                              alt="<s:property value="#paragraph.content"/>"/></a></li>
                     </s:iterator>
                     <s:bean name="org.apache.struts2.util.Counter" id="counter">
@@ -531,6 +544,17 @@
             <div class="banner_count">1</div>
         </div><!--banner end-->
     </section>
+
+    <section>
+        <div class="banner_pic">
+            <img width="630" height="210" src=""/>
+        </div>
+        <div class="banner_info">
+            <div class="ext"/>
+        </div>
+        <div class="banner_count">1</div>
+    </section>
+
     <section id="shortcodes">
         <div class="banner" id="kakaFocus3">
             <a class="btn_prev" title="上一个" href="#">Previous</a>
@@ -539,6 +563,7 @@
                 <ul>
                     <s:iterator value="#request.paragraph_list.get(2)" id="paragraph" status="st">
                         <li><a href="#"><img width="630" height="210" src="images/pic_0x${st.index + 1}.jpg"
+                                             title="<s:property value="#paragraph.content"/>"
                                              alt="<s:property value="#paragraph.content"/>"/></a></li>
                     </s:iterator>
                     <s:bean name="org.apache.struts2.util.Counter" id="counter">
@@ -587,6 +612,15 @@
         </div><!--banner end-->
     </section>
 
+    <section>
+        <div class="banner_pic">
+            <img width="630" height="210" src=""/>
+        </div>
+        <div class="banner_info">
+            <div class="ext"/>
+        </div>
+        <div class="banner_count">1</div>
+    </section>
 
     <section id="gallery">
         <div class="banner" id="kakaFocus4">
@@ -596,6 +630,7 @@
                 <ul>
                     <s:iterator value="#request.paragraph_list.get(3)" id="paragraph" status="st">
                         <li><a href="#"><img width="630" height="210" src="images/pic_0x${st.index + 1}.jpg"
+                                             title="<s:property value="#paragraph.content"/>"
                                              alt="<s:property value="#paragraph.content"/>"/></a></li>
                     </s:iterator>
                     <s:bean name="org.apache.struts2.util.Counter" id="counter">
@@ -642,60 +677,16 @@
             </div>
             <div class="banner_count">1</div>
         </div><!--banner end-->
+    </section>
 
-        <div class="banner" id="kakaFocus5">
-            <a class="btn_prev" title="上一个" href="#">Previous</a>
-            <a class="btn_next" title="下一个" href="#">Next</a>
-            <div class="banner_pic">
-                <ul>
-                    <s:iterator value="#request.paragraph_list.get(4)" id="paragraph" status="st">
-                        <li><a href="#"><img width="630" height="210" src="images/pic_0x${st.index + 1}.jpg"
-                                             alt="<s:property value="#paragraph.content"/>"/></a></li>
-                    </s:iterator>
-                    <s:bean name="org.apache.struts2.util.Counter" id="counter">
-                        <s:param name="first" value="#request.paragraph_list.get(4).size() + 1"/>
-                        <s:param name="last" value="5"/>
-                        <s:iterator>
-                            <li><a href="#"><img width="630" height="210" src="images/pic_0<s:property/>.jpg"
-                                                 alt=""/></a></li>
-                        </s:iterator>
-                    </s:bean>
-                    <li>
-                        <div class="cTextArea4" width="630" height="210"/>
-                        <!--这里将会用来填充输入框 在本文件的61行处 countTextAreaMakerGrounp函数负责生成（在HTMLmaker中）-->
-                    </li>
-                </ul>
-            </div>
-            <div class="banner_info">
-                <ul>
-                    <li>
-                        <h4><a href="#">快乐的旅程，参观武汉可口可乐饮料有限公司</a></h4>
-                        <div class="ext" id="starInfo40"/>
-                    </li>
-                    <li>
-                        <h4><a href="#">巧口英语“力推”Club活动——？</a></h4>
-                        <div class="ext" id="starInfo41"/>
-                    </li>
-                    <li>
-                        <h4><a href="#">想学音乐应从什么时候开始？</a></h4>
-                        <div class="ext" id="starInfo42"/>
-                    </li>
-                    <li>
-                        <h4><a href="#">关于草原情全国小记者选拔赛通知。</a></h4>
-                        <div class="ext" id="starInfo43"/>
-                    </li>
-                    <li>
-                        <h4><a href="#">中国小记者新闻写作大赛？</a></h4>
-                        <div class="ext" id="starInfo44"/>
-                    </li>
-                    <li>
-                        <h4><a href="#">中国小记者新闻写作大赛？</a></h4>
-                        <div class="ext" id="starInfo45"/>
-                    </li>
-                </ul>
-            </div>
-            <div class="banner_count">1</div>
-        </div><!--banner end-->
+    <section>
+        <div class="banner_pic">
+            <img width="630" height="210" src=""/>
+        </div>
+        <div class="banner_info">
+            <div class="ext"/>
+        </div>
+        <div class="banner_count">1</div>
     </section>
 
 </div>

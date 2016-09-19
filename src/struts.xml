@@ -54,7 +54,7 @@
 			<result name="success" type="redirectAction">listJournal?journal_id=${journal_id}</result>
 		</action>
 		<action name="showArticle" class="showArticleAction">
-			<result name="success">Article.jsp</result>
+			<result name="success">Article2.jsp</result>
 		</action>
 		<action name="addParagraph" class="addParagraphAction">
 			<result name="success" type="redirectAction">showArticle?article_id=${article_id}&amp;chapter_id=${chapter_id}</result>

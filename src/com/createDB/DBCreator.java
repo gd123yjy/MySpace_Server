@@ -1,22 +1,11 @@
 package com.createDB;
 
-import com.bean.User;
+import com.bean.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.registry.internal.StandardServiceRegistryImpl;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.internal.SessionFactoryImpl;
-import org.hibernate.internal.SessionFactoryRegistry;
-import org.hibernate.mapping.MetadataSource;
-import org.hibernate.metamodel.MetadataSources;
-import org.hibernate.metamodel.source.MetadataImplementor;
-import org.hibernate.metamodel.source.internal.MetadataBuilderImpl;
-import org.hibernate.metamodel.source.internal.SessionFactoryBuilderImpl;
-import org.hibernate.service.ServiceRegistry;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
-
-import java.util.List;
 
 /**
  * Created by yjy on 16-9-11.
@@ -28,9 +17,9 @@ public class DBCreator {
         SchemaExport schemaExport = new SchemaExport(configuration);
         schemaExport.create(true,true);
 
-        //创建管理员
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session=sessionFactory.openSession();
+        //创建管理员
         Transaction transaction=session.beginTransaction();
         User user = new User();
         user.setAdmin(true);
@@ -38,8 +27,37 @@ public class DBCreator {
         user.setPassword("111111");
         user.setUsername("root");
         session.save(user);
-        transaction.commit();
 
+        //创建初始杂志
+        Journal journal = new Journal();
+        journal.setISSN("1234-5678");
+        journal.setJournal_title("initial journal");
+
+        Article article = new Article();
+        article.setOutline("article-outline");
+        article.setTitle("initial article");
+        article.setJournal(journal);
+
+        Chapter chapter = new Chapter();
+        chapter.setSequence(0);
+        chapter.setTitle("initial chapter");
+        chapter.setArticle(article);
+
+        Paragraph paragraph = new Paragraph();
+        paragraph.setSequence(0);
+        paragraph.setContent("this is the initial paragraph");
+        paragraph.setScore_num(0);
+        paragraph.setScore(0.0);
+        paragraph.setUser(user);
+        paragraph.setChapter(chapter);
+
+        session.save(journal);
+        session.save(article);
+        session.save(chapter);
+        session.save(paragraph);
+
+        //提交事务
+        transaction.commit();
         //关闭数据库连接
         if (session.isOpen()){
             session.close();

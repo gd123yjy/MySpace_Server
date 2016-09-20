@@ -73,7 +73,7 @@ public class AddParagraph extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		Integer userid = (Integer)session.get("userid");
 		if (userid == null) {
-			addFieldError("message", "Äú»¹Ä¾ÓĞµÇÂ¼À²£¡");
+			addFieldError("message", "æ‚¨è¿˜æœ¨æœ‰ç™»å½•å•¦ï¼");
 			return INPUT;
 		}
 		service.add_paragraph(userid, chapter_id, sequence, content, 1.0, 1);

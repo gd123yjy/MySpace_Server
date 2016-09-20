@@ -49,12 +49,14 @@
         };
         $(function () {
             var maxWord = 400;
+            var listSize = ${request.paragraph_list==null?0:request.paragraph_list.size()};
+
             //add focusBox Controller
-            focusBoxController('kakaFocus1', 0, 5);
-            focusBoxController('kakaFocus2', 1, 5);
-            focusBoxController('kakaFocus3', 2, 5);
-            focusBoxController('kakaFocus4', 3, 5);
-            focusBoxController('kakaFocus5', 4, 5);
+            for (var i = 1; i < listSize + 1; i++) {
+                focusBoxController('kakaFocus' + i, i - 1, listSize + 1);
+            }
+            focusBoxController('add_paragraph', listSize, listSize + 1);
+
             //add mouseWheel effect
             $('.banner')
                     .mousewheel(function (event, delta) {
@@ -64,126 +66,44 @@
                             $(this).children('a.btn_next').trigger('click');
                         return false; // prevent default
                     });
+
             //count TextArea
-            countTextAreaMakerGrounp("cTextArea", 5);
-            $("#content0").focus(function () {
-                $("#content0").keydown(check0);
-                $("#content0").keyup(check0);
-                $("#content0").onpaste(check0);
-            });
-            $("#content1").focus(function () {
-                $("#content1").keyup(check1);
-                $("#content1").keydown(check1);
-                $("#content1").onpaste(check1);
-            });
-            $("#content2").focus(function () {
-                $("#content2").keyup(check2);
-                $("#content2").keydown(check2);
-                $("#content2").onpaste(check2);
-            });
-            $("#content3").focus(function () {
-                $("#content3").keyup(check3);
-                $("#content3").keydown(check3);
-                $("#content3").onpaste(check3);
-            });
-            $("#content4").focus(function () {
-                $("#content4").keyup(check4);
-                $("#content4").keydown(check4);
-                $("#content4").onpaste(check4);
-            });
+            countTextAreaMakerGrounp("cTextArea", listSize + 1);
+            var i = 0;
+            for (; i < listSize+1; i++) {
+                var content = "content"+i;
+                $("#" + content).focus(function () {
+                    $("#" + content).keydown(check(i));
+                    $("#" + content).keyup(check(i));
+                    try {
+                        $("#" + content).onpaste(check(i));
+                    } catch (e) {
+                        //alert(e.message);
+                    }
+                });
+            }
             $("#note").focus(function () {
                 $("#note").keyup(checkn);
                 $("#note").keydown(checkn);
                 $("#note").onpaste(checkn);
             });
-            function check0() {
-                var str = $("#content0").val();
+
+            function check(i) {
+                var content = "content"+i;
+                var str = $("#" + content).val();
                 var info = maxWord - str.length;
                 info = info + "";
                 if (info.indexOf('.') > 0)
                     info = info.substring(0, info.indexOf('.'));
                 if (str.length <= maxWord) {
-                    $("#info10").html("还能输入");
-                    $("#info00").html(info).css('color', 'gray');
-                    $('#button0').removeAttr("disabled");
+                    $("#" + ("info1"+i)).html("还能输入");
+                    $("#" + ("info0"+i)).html(info).css('color', 'gray');
+                    $('#' + ("button"+i)).removeAttr("disabled");
                 } else {
                     info = info.substr(1)
-                    $("#info10").html("超出");
-                    $("#info00").html(info).css('color', 'red');
-                    $('#button0').attr('disabled', "true");
-                }
-            }
-
-            function check1() {
-                var str = $("#content1").val();
-                var info = maxWord - str.length;
-                info = info + "";
-                if (info.indexOf('.') > 0) {
-                    info = info.substring(0, info.indexOf('.'));
-                    if (str.length <= maxWord) {
-                        $("#info11").html("还能输入");
-                        $("#info01").html(info).css('color', 'gray');
-                        $('#button1').removeAttr("disabled");
-                    } else {
-                        info = info.substr(1)
-                        $("#info11").html("超出");
-                        $("#info01").html(info).css('color', 'red');
-                        $('#button1').attr('disabled', "true");
-                    }
-                }
-            }
-
-            function check2() {
-                var str = $("#content2").val();
-                var info = maxWord - str.length;
-                info = info + "";
-                if (info.indexOf('.') > 0)
-                    info = info.substring(0, info.indexOf('.'));
-                if (str.length <= maxWord) {
-                    $("#info12").html("还能输入");
-                    $("#info02").html(info).css('color', 'gray');
-                    $('#button2').removeAttr("disabled");
-                } else {
-                    info = info.substr(1)
-                    $("#info12").html("超出");
-                    $("#info02").html(info).css('color', 'red');
-                    $('#button2').attr('disabled', "true");
-                }
-            }
-
-            function check3() {
-                var str = $("#content3").val();
-                var info = maxWord - str.length;
-                info = info + "";
-                if (info.indexOf('.') > 0)
-                    info = info.substring(0, info.indexOf('.'));
-                if (str.length <= maxWord) {
-                    $("#info13").html("还能输入");
-                    $("#info03").html(info).css('color', 'gray');
-                    $('#button3').removeAttr("disabled");
-                } else {
-                    info = info.substr(1)
-                    $("#info13").html("超出");
-                    $("#info03").html(info).css('color', 'red');
-                    $('#button3').attr('disabled', "true");
-                }
-            }
-
-            function check4() {
-                var str = $("#content4").val();
-                var info = maxWord - str.length;
-                info = info + "";
-                if (info.indexOf('.') > 0)
-                    info = info.substring(0, info.indexOf('.'));
-                if (str.length <= maxWord) {
-                    $("#info14").html("还能输入");
-                    $("#info04").html(info).css('color', 'gray');
-                    $('#button4').removeAttr("disabled");
-                } else {
-                    info = info.substr(1)
-                    $("#info14").html("超出");
-                    $("#info04").html(info).css('color', 'red');
-                    $('#button4').attr('disabled', "true");
+                    $("#" + ("info1"+i)).html("超出");
+                    $("#" + ("info0"+i)).html(info).css('color', 'red');
+                    $('#' + ("button"+i)).attr('disabled', "true");
                 }
             }
 
@@ -261,11 +181,16 @@
                 m2_open_demo();
                 return false;
             });
-            starHTMLMakerGrounp('starInfo', 0, 5);
-            starHTMLMakerGrounp('starInfo', 1, 5);
-            starHTMLMakerGrounp('starInfo', 2, 5);
-            starHTMLMakerGrounp('starInfo', 3, 5);
-            starHTMLMakerGrounp('starInfo', 4, 5);
+
+            for (var i = 0; i < listSize; i++) {
+                starHTMLMakerGrounp('starInfo', i, listSize + 1);
+            }
+            starHTMLMakerGrounp('add_paragraph_starInfo', listSize, listSize + 1);
+            /*starHTMLMakerGrounp('starInfo', 0, 5);
+             starHTMLMakerGrounp('starInfo', 1, 5);
+             starHTMLMakerGrounp('starInfo', 2, 5);
+             starHTMLMakerGrounp('starInfo', 3, 5);
+             starHTMLMakerGrounp('starInfo', 4, 5);*/
         })
     </script>
 
@@ -355,6 +280,7 @@
 <input id="addParagraph_chapter_id" type="text" style="display:none;" value="${chapter_id}"/>
 
 <div class="wrapper">
+
     <section id="home">
         <header>
             <h1>Immaculate</h1>
@@ -435,7 +361,7 @@
                             <s:param name="last" value="5"/>
                             <s:iterator>
                                 <li>
-                                    <h4><a href="#">to be filled</a></h4>
+                                    <h4><a href="#">没有其他版本哟，快来投稿吧！</a></h4>
                                     <div class="ext" id="starInfo${my_st.index}<s:property/>"/>
                                 </li>
                             </s:iterator>
@@ -455,7 +381,26 @@
 
     <section id="about"></section>
 
-    <section id="shortcodes"></section>
+    <section id="shortcodes">
+        <div class="banner" id="add_paragraph">
+
+            <div class="banner_pic">
+                <li>
+                    <div class="cTextArea${request.paragraph_list==null?0:request.paragraph_list.size()}" width="630"
+                         height="210"/>
+                    <!--这里将会用来填充输入框 在本文件的61行处 countTextAreaMakerGrounp函数负责生成（在HTMLmaker中）-->
+                </li>
+            </div>
+            <div class="banner_info">
+
+                <li>
+                    <h4><a href="#">新增段落</a></h4>
+                    <div class="ext" id="add_paragraph_starInfo"/>
+                </li>
+            </div>
+            <div class="banner_count">1</div>
+        </div>
+    </section>
 
     <section id="gallery"></section>
 

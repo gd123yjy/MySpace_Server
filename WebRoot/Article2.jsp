@@ -69,14 +69,19 @@
 
             //count TextArea
             countTextAreaMakerGrounp("cTextArea", listSize + 1);
-            var i = 0;
-            for (; i < listSize+1; i++) {
-                var content = "content"+i;
+            for (var i = 0; i < listSize + 1; i++) {
+                var content = "content" + i;
                 $("#" + content).focus(function () {
-                    $("#" + content).keydown(check(i));
-                    $("#" + content).keyup(check(i));
+                    $(this).keydown(function () {
+                        check($(this));
+                    });
+                    $(this).keyup(function () {
+                        check($(this));
+                    });
                     try {
-                        $("#" + content).onpaste(check(i));
+                        $(this).onpaste(function () {
+                            check($(this));
+                        });
                     } catch (e) {
                         //alert(e.message);
                     }
@@ -88,23 +93,28 @@
                 $("#note").onpaste(checkn);
             });
 
-            function check(i) {
-                var content = "content"+i;
-                var str = $("#" + content).val();
+            function check(trigger) {
+                //var content = "content" + my_num;
+                var str = trigger.val();
                 var info = maxWord - str.length;
                 info = info + "";
                 if (info.indexOf('.') > 0)
                     info = info.substring(0, info.indexOf('.'));
                 if (str.length <= maxWord) {
-                    $("#" + ("info1"+i)).html("还能输入");
-                    $("#" + ("info0"+i)).html(info).css('color', 'gray');
-                    $('#' + ("button"+i)).removeAttr("disabled");
+                    var my_num = getContentNum(trigger);
+                    $("#" + ("info1" + my_num)).html("还能输入");
+                    $("#" + ("info0" + my_num)).html(info).css('color', 'gray');
+                    $('#' + ("button" + my_num)).removeAttr("disabled");
                 } else {
                     info = info.substr(1)
-                    $("#" + ("info1"+i)).html("超出");
-                    $("#" + ("info0"+i)).html(info).css('color', 'red');
-                    $('#' + ("button"+i)).attr('disabled', "true");
+                    $("#" + ("info1" + my_num)).html("超出");
+                    $("#" + ("info0" + my_num)).html(info).css('color', 'red');
+                    $('#' + ("button" + my_num)).attr('disabled', "true");
                 }
+            }
+
+            function getContentNum(content) {
+                return (content.attr("id").charCodeAt(7))-48;
             }
 
             function checkn() {

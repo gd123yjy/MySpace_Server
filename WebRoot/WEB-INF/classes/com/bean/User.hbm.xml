@@ -3,10 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.bean.User" table="user" catalog="storyfm">
+    <!--user是oracle关键字所以表名不能是user-->
+	<class name="com.bean.User" table="Paragraph_user" catalog="u20142005034">
 		<id name="userid" type="java.lang.Integer">
 			<column name="userid"></column>
-			<generator class="increment"></generator>
+			<!--oracle不支持increase-->
+			<generator class="sequence"></generator>
 		</id>
 		<property name="username" type="java.lang.String">
 			<column name="username" length="20" not-null="true"></column>

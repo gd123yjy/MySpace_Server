@@ -16,12 +16,12 @@
       </driver-properties>
     </data-source>
     <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="53f1d0fc-4240-4b2e-8ebd-dd86af0f6415">
-      <driver-ref>mysql</driver-ref>
+      <driver-ref>adcde0f3-9b12-49b7-9f89-d4d6e48e98e8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/src/hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/storyfm?useUnicode=true&amp;characterEncoding=utf8</jdbc-url>
+      <jdbc-url>jdbc:oracle:thin:@//10.248.8.52:1521/orcl</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -32,12 +32,25 @@
       </driver-properties>
       <libraries>
         <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-license.txt</url>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/oracle-driver-license.txt</url>
         </library>
         <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-java-5.1.35-bin.jar</url>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xdb6-12.1.0.2.jar</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xmlparserv2.jar</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/ojdbc6-12.1.0.2.jar</url>
         </library>
       </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Oracle - @10.248.8.52" uuid="3b9d5c25-0f56-44fc-a09f-21e04a3902ea">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@//10.248.8.52:1521/orcl</jdbc-url>
     </data-source>
   </component>
 </project>

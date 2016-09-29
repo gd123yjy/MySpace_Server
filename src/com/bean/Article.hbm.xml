@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.bean.Article" table="article" catalog="storyfm">
+	<class name="com.bean.Article" table="article">
 		<id name="article_id" type="java.lang.Integer">
 			<column name="article_id"></column>
-			<generator class="identity"></generator>
+			<generator class="sequence"></generator>
 		</id>
 		<property name="outline" type="java.lang.String">
 			<column name="outline" length="20" not-null="false"></column>

@@ -91,11 +91,15 @@ public class JournalDAOImpl implements JournalDAO {
 
 			//在众多版本的段落i中获得随机5个
 			hql = "from Paragraph paragraph where chapter_id = :chapter_id and sequence = :sequence order by rand()";
-			query = session.createQuery(hql);
+            //hql = "from Paragraph paragraph where chapter_id = :chapter_id and sequence = :sequence order by id * dbms_random.value";
+            query = session.createQuery(hql);
 			query.setInteger("chapter_id", chapter_id);
 			query.setInteger("sequence", i);
 			query.setFirstResult(0);
 			query.setMaxResults(5);
+			//oracle此处抛出异常，mysql正常运作
+            //Hibernate: select * from ( select paragraph0_.paragraph_id as paragraph_id1_4_, paragraph0_.sequence as sequence2_4_, paragraph0_.content as content3_4_, paragraph0_.score as score4_4_, paragraph0_.score_num as score_num5_4_, paragraph0_.chapter_id as chapter_id6_4_, paragraph0_.userid as userid7_4_ from u20142005034.paragraph paragraph0_ where chapter_id=? and paragraph0_.sequence=? order by rand() ) where rownum <= ?
+            //似乎是因为没有rand()函数
 			List<Paragraph> random_score_paragraphs = query.list();
 
 			//从随机到的5个中取出2个加入到最终结果中

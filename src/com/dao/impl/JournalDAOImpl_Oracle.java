@@ -1,20 +1,18 @@
 package com.dao.impl;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
+import com.bean.Chapter;
 import com.bean.Journal;
+import com.bean.Paragraph;
+import com.dao.JournalDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import com.bean.Chapter;
-import com.bean.Paragraph;
-import com.dao.JournalDAO;
 import org.hibernate.Transaction;
 
-public class JournalDAOImpl implements JournalDAO {
+import java.util.ArrayList;
+import java.util.List;
+
+public class JournalDAOImpl_Oracle implements JournalDAO {
 
 	SessionFactory sessionFactory;
 	
@@ -90,14 +88,16 @@ public class JournalDAOImpl implements JournalDAO {
 			List<Paragraph> high_score_paragraphs = query.list();
 
 			//在众多版本的段落i中获得随机5个
-			hql = "from Paragraph paragraph where chapter_id = :chapter_id and sequence = :sequence order by rand()";
+			hql = "from Paragraph paragraph where chapter_id = :chapter_id and sequence = :sequence order by id * dbms_random.value()";
             //hql = "from Paragraph paragraph where chapter_id = :chapter_id and sequence = :sequence order by id * dbms_random.value";
             query = session.createQuery(hql);
 			query.setInteger("chapter_id", chapter_id);
 			query.setInteger("sequence", i);
 			query.setFirstResult(0);
 			query.setMaxResults(5);
-
+            //Hibernate: select * from ( select paragraph0_.paragraph_id as paragraph_id1_4_, paragraph0_.sequence as sequence2_4_, paragraph0_.content as content3_4_, paragraph0_.score as score4_4_, paragraph0_.score_num as score_num5_4_, paragraph0_.chapter_id as chapter_id6_4_, paragraph0_.userid as userid7_4_ from u20142005034.paragraph paragraph0_ where chapter_id=? and paragraph0_.sequence=? order by rand() ) where rownum <= ?
+			//oracle此处抛出异常，mysql正常运作
+			//似乎是因为没有rand()函数
 			List<Paragraph> random_score_paragraphs = query.list();
 
 			//从随机到的5个中取出2个加入到最终结果中

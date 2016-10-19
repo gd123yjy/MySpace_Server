@@ -11,6 +11,7 @@ import com.dao.JournalDAO;
 import com.service.JournalService;
 
 public class JournalServiceImpl implements JournalService {
+
 	private JournalDAO journalDAO;
 	
 	public void setJournalDAO(JournalDAO journalDAO) {

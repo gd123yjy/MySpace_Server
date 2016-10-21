@@ -9,9 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.SimpleFormController;
+import org.springframework.web.servlet.mvc.support.ControllerBeanNameHandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -30,7 +31,7 @@ public class JournalControllor implements IJournalControllor {
     @Autowired
     private JournalService journalService;
 
-    @Autowired
+   /* @Autowired
     Integer journal_id = null;
     @Autowired
     String journal_title = null;
@@ -57,7 +58,7 @@ public class JournalControllor implements IJournalControllor {
     @Autowired
     Integer paragraph_id = null;
     @Autowired
-    Integer userid = null;
+    Integer userid = null;*/
 
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -67,7 +68,7 @@ public class JournalControllor implements IJournalControllor {
         this.journalService = service;
     }
 
-    public void setJournal_id(Integer journal_id) {
+    /*public void setJournal_id(Integer journal_id) {
         this.journal_id = journal_id;
     }
 
@@ -126,9 +127,9 @@ public class JournalControllor implements IJournalControllor {
     public void setUserid(Integer userid) {
         this.userid = userid;
     }
-
+*/
     @RequestMapping(value = "/listJournal",method = RequestMethod.GET)
-    public String listJournal(HttpServletRequest request,ModelMap modelMap) {
+    public String listJournal(@RequestParam(value = "journal_id",required = false,defaultValue = "0") int journal_id, ModelMap modelMap) {
 
         List journal_list = journalService.find_all();
         modelMap.put("journal_list", journal_list);
@@ -137,7 +138,7 @@ public class JournalControllor implements IJournalControllor {
         if (journal_list.size()==0){
             modelMap.put("article_list", article_list);
         }else {
-            if (journal_id == null) {
+            if (journal_id == 0) {
                 journal_id = (Integer)((Object[])journal_list.get(0))[0];
             }
             modelMap.put("journal_id", journal_id);
@@ -149,31 +150,31 @@ public class JournalControllor implements IJournalControllor {
     }
 
     @RequestMapping(value = "/addJournal",method = RequestMethod.POST)
-    public String addJournal(HttpServletRequest request,ModelMap modelMap) {
+    public String addJournal(@ModelAttribute String journal_title, @RequestParam(value = "ISSN",required = false,defaultValue = "no named") String ISSN, @RequestParam(value = "articles_title",required = false,defaultValue = "no named") List<String> articles_title, @RequestParam(value = "articles_outline",required = false,defaultValue = "no named") List<String> articles_outline, @RequestParam(value = "chapters_title",required = false,defaultValue = "no named") List<String> chapters_title, ModelMap modelMap) {
 
         journalService.add_journal(journal_title, ISSN, articles_title, articles_outline, chapters_title);
         return "listJournal";
     }
 
     @RequestMapping(value = "/deleteJournal",method = RequestMethod.POST)
-    public String deleteJournal(HttpServletRequest request,ModelMap modelMap) {
+    public String deleteJournal(@ModelAttribute int journal_id,ModelMap modelMap) {
         journalService.delete_journal(journal_id);
         return "listJournal";
     }
 
     @RequestMapping(value = "/editJournal",method = RequestMethod.POST)
-    public ModelAndView editJournal(HttpServletRequest request,ModelMap modelMap) {
+    public ModelAndView editJournal(@ModelAttribute int journal_id, @ModelAttribute int article_id, @ModelAttribute String article_title, @ModelAttribute String article_outline, ModelMap modelMap) {
         journalService.update_article(article_id, article_title, article_outline);
         modelMap.addAttribute("journal_id",journal_id);
         return new ModelAndView("listJournal",modelMap);
     }
 
     @RequestMapping(value = "/showArticle",method = RequestMethod.GET)
-    public String showArticle(HttpServletRequest request,ModelMap modelMap) {
+    public String showArticle(@ModelAttribute int article_id,@ModelAttribute int chapter_id,@ModelAttribute int userid,ModelMap modelMap) {
         List chapter_list = journalService.find_chapter_of_article(article_id);
         modelMap.put("chapter_list", chapter_list);
 
-        if(chapter_id == null) {
+        if(chapter_id == 0) {
             //类似于chapter_id = ((Chapter)chapter_list.get(0)).getChapter_id();
             //但不是等价于
             chapter_id = (Integer)((Object[])chapter_list.get(0))[0];
@@ -184,8 +185,8 @@ public class JournalControllor implements IJournalControllor {
     }
 
     @RequestMapping(value = "/addParagraph",method = RequestMethod.POST)
-    public ModelAndView addParagraph(HttpServletRequest request,ModelMap modelMap) {
-        if (userid == null) {
+    public ModelAndView addParagraph(@ModelAttribute int userid,@ModelAttribute int article_id,@ModelAttribute int chapter_id,@ModelAttribute int sequence,@ModelAttribute String content,ModelMap modelMap) {
+        if (userid == 0) {
             modelMap.addAttribute("message", "您还木有登录啦！");
             return new ModelAndView("welcome",modelMap);
         }
@@ -196,13 +197,13 @@ public class JournalControllor implements IJournalControllor {
     }
 
     @RequestMapping(value = "/modifyParagraph",method = RequestMethod.POST)
-    public ModelAndView modifyParagraph(HttpServletRequest request,ModelMap modelMap) {
+    public ModelAndView modifyParagraph(@ModelAttribute int paragraph_id,@ModelAttribute int userid,@ModelAttribute String content,ModelMap modelMap) {
         Paragraph paragraph = journalService.find_paragraph_by_paragraph_id(paragraph_id);
         if (paragraph==null){
             modelMap.addAttribute("message", "找不到您要修改的段落！");
             return new ModelAndView("message",modelMap);
         }
-        if (userid == null){
+        if (userid == 0){
             modelMap.addAttribute("message", "您尚未登陆！");
             return new ModelAndView("message",modelMap);
         }
@@ -216,7 +217,7 @@ public class JournalControllor implements IJournalControllor {
     }
 
     @RequestMapping(value = "/deleteParagraph",method = RequestMethod.POST)
-    public ModelAndView deleteParagraph(HttpServletRequest request,ModelMap modelMap) {
+    public ModelAndView deleteParagraph(@ModelAttribute int paragraph_id,@ModelAttribute int userid,ModelMap modelMap) {
         Paragraph paragraph = journalService.find_paragraph_by_paragraph_id(paragraph_id);
         if (userid != paragraph.getUser().getUserid()) {
             modelMap.addAttribute("message", "这段东西又不是你写的，不能改它！");

@@ -5,9 +5,9 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
     <bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource"><!--org.springframework.jdbc.datasource.DriverManagerDataSource-->
-        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-        <property name="url" value="jdbc:oracle:thin:@//10.248.8.52:1521/orcl"></property>
-        <property name="username" value="u20142005034"></property>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/ssh"></property>
+        <property name="username" value="yjy"></property>
         <property name="password" value="111111"></property>
 
         <!--org.apache.commons.dbcp2.BasicDataSource专有属性-->
@@ -20,9 +20,10 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">
-                    org.hibernate.dialect.Oracle10gDialect
+                    org.hibernate.dialect.MySQLDialect
                 </prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
 
         </property>
@@ -55,7 +56,7 @@
     </bean>
 
 
-    <bean id="journalDAO" class="com.dao.impl.JournalDAOImpl_Oracle" scope="singleton">
+    <bean id="journalDAO" class="com.dao.impl.JournalDAOImpl" scope="singleton">
         <property name="sessionFactory">
             <ref bean="sessionFactory"></ref>
         </property>

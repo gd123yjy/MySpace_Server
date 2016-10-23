@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <html lang="en">
@@ -58,37 +58,44 @@
 		
         <div class="container">
 			<header>
-				<s:if test="#session.username != null">
-			    	<h5 style="float:right;">Welcome Back! <a href="userManage.action"><s:property value="#session.username"></s:property></a><a href="logout.action">&emsp;log out</a></h5><br>
-			    </s:if>
-			    <s:else>
-			    	<h5 style="float:right;"><a href="welcome.jsp">&emsp;log in</a></h5><br>
-			    </s:else>
-			    
+				<c:choose>
+					<c:when test="#session.username != null">
+						<h5 style="float:right;">Welcome Back!
+                            <a href="userManage.action">
+                            <input value="#session.username"/></a>
+                            <a href="logout.action">&emsp;log out</a>
+                        </h5>
+                        <br>
+					</c:when>
+                    <c:otherwise>
+                        <h5 style="float:right;"><a href="welcome.jsp">&emsp;log in</a></h5><br>
+                    </c:otherwise>
+				</c:choose>
+
 				<h1>Article <span>Wanted!</span></h1>
 				<h2>Using Box Shadows, Transform and Transitions</h2>
 			</header>
 			<section class="ib-container" id="ib-container">
-			<s:iterator value="#request.article_list" id = "article" status="st">
+			<c:forEach items="#request.article_list" var="article" varStatus="st">
 				<article>
-					<input type="text" id="article_id${st.index}" style="display:none;" value="${article[0]}">
-					<header>
-						<h3>
-							<s:a target="_blank" href="showArticle.action?article_id=%{#article[0]}">
-								<div id="article_title${st.index}">	
-									<s:property value="#article[1]"/>
-								</div>
-							</s:a>
-						</h3>
-						<!-- <span>December 8, 2011 by Gisele Muller</span> -->
-					</header>
-					<p>
-						<div id="article_content${st.index}">
-							<s:property value="#article[2]"/>
-						</div>	
-					</p>
+                    <input type="text" id="article_id${st.index}" style="display:none;" value="${article}">
+                    <header>
+                        <h3>
+                            <c:url value="/showArticle?article_id=%{article}">
+                                <div id="article_title${st.index}">
+                                    <input value="${article}"/>
+                                </div>
+                            </c:url>
+                        </h3>
+                        <!-- <span>December 8, 2011 by Gisele Muller</span> -->
+                    </header>
+                    <p>
+                    <div id="article_content${st.index}">
+                        <input value="${article}"/>
+                    </div>
+                    </p>
 				</article>
-			</s:iterator>
+			</c:forEach>
 
 				
 			</section>
@@ -103,18 +110,21 @@
 			<div class="newslist">
 				<h3>选择杂志</h3>
 				<ul>
-					<s:iterator value="#request.journal_list" id = "journal">
+					<c:forEach items="#request.journal_list" var="journal">
 						<li>
-							<s:a href="listJournal.action?journal_id=%{#journal[0]}"><s:property value="#journal[2]"></s:property>  <s:property value="#journal[1]"/> </s:a>
+							<c:url value="listJournal?journal_id=%{#journal[0]}">
+                                <input value="${journal}"/>
+                                <input value="${journal}"/>
+                            </c:url>
 						</li>
-					</s:iterator>
+					</c:forEach>
 					
 				</ul>
 			</div>
 		</div>
 		<!--菜单-->
 		</div>
-		<s:if test="#session.admin == true">
+		<c:if test="#session.admin == true">
 			<div class="float-open" id="float-open2" style="left:-2px; top:300px;background:url(../../images/admin.png) no-repeat;background-size:90% 90%;background-position:center;">
 			<a class="open-btn" id="open-btn2" href="javascript:void(0);">&gt;</a>
 		</div>
@@ -177,10 +187,10 @@
 		<div class="float-news" id="float-new" style="left:-300px; top:75px; width:200px;height:550px">
 			<a class="float-close" id="float-close-new" style="background:url(../../images/x.png) no-repeat;background-size:100% 100%;" href="javascript:void(0);">X</a>
 			<div class="newslist">
-			<s:form action="addJournal" id="new-journal">
+			<form action="addJournal" id="new-journal">
 				<h3>新建杂志</h3>
 				<div id="new-joural-html"/>
-			</s:form>
+			</form>
 			</div>
 		</div>
 		
@@ -233,7 +243,7 @@
 		<!--编辑文章信息-->
 		<div class="float-news" id="float-edit-article" style="left:-450px; top:225px; width:280px;height:200px">
 			<a class="float-close" style="background:url(../../images/x.png) no-repeat;background-size:100% 100%;" href="javascript:menu_close('float-edit-article','float-edit')">X</a>
-			<s:form action="editJournal" id="edit-journal-form">
+			<form action="editJournal" id="edit-journal-form">
 				<input name="journal_id" style="display:none;" value="${request.journal_id}">
 				<input id="current_article_index" style="display:none"  value=""/>
 				<div class="newslist">
@@ -241,7 +251,7 @@
 					<input name="article_id" id="current_article_id" style="display:none" value=""/><!--在数据库中的文章id-->
 					<div id="edit-Article-imf"/><!--用于生成文章信息-->
 				</div>
-			</s:form>
+			</form>
 		</div>
 		
 		
@@ -259,13 +269,15 @@
 					</tr>
 					<tr>
 						<td align="center">
-							<s:a href="deleteJournal.action?journal_id=%{#request.journal_id}"><input class="submit" type="button" value="确定"> </s:a>
+							<c:url value="deleteJournal?journal_id=%{#request.journal_id}">
+                                <input class="submit" type="button" value="确定">
+                            </c:url>
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		
-		</s:if>
+		</c:if>
 	</body>
 </html>

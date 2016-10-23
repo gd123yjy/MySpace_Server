@@ -1,72 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="WebRoot:WEB-INF:classes:hibernate.cfg.xml/Hibernate" uuid="9aa6e7fb-d437-4f45-bd97-f51869b70aa4">
+    <data-source source="LOCAL" name="src:main:webapp:hibernate.cfg.xml/Hibernate" uuid="e9fcf6ba-ced8-4d8b-8e0c-670cfdb32357">
+      <driver-ref>adcde0f3-9b12-49b7-9f89-d4d6e48e98e8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <configured-by-url>true</configured-by-url>
-      <remarks>$PROJECT_DIR$/src/main/java/WebRoot/WEB-INF/classes/hibernate.cfg.xml</remarks>
-      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@//10.248.8.52:1521/orcl</jdbc-url>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/ojdbc6-12.1.0.2.jar</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xdb6-12.1.0.2.jar</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xmlparserv2.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="src:main:webapp:WEB-INF:classes:hibernate.cfg.xml/Hibernate" uuid="abc80409-f96f-4696-a37c-5941a0d1961a">
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/hibernate.cfg.xml</remarks>
-      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@//10.248.8.52:1521/orcl</jdbc-url>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/ojdbc6-12.1.0.2.jar</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xdb6-12.1.0.2.jar</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xmlparserv2.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="src:main:hibernate.cfg.xml/Hibernate" uuid="353c7d2e-4607-4431-afd0-1c4848f6e63b">
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <configured-by-url>true</configured-by-url>
-      <remarks>$PROJECT_DIR$/src/main/hibernate.cfg.xml</remarks>
-      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@//10.248.8.52:1521/orcl</jdbc-url>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/ojdbc6-12.1.0.2.jar</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xdb6-12.1.0.2.jar</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xmlparserv2.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="src:main:webapp:hibernate.cfg.xml/Hibernate" uuid="9b3e12ca-db99-4cb7-878e-b2e7665e3da9">
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <configured-by-url>true</configured-by-url>
       <remarks>$PROJECT_DIR$/src/main/webapp/hibernate.cfg.xml</remarks>
-      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@//10.248.8.52:1521/orcl</jdbc-url>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/ssh</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
       <libraries>
         <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/ojdbc6-12.1.0.2.jar</url>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/oracle-driver-license.txt</url>
         </library>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xdb6-12.1.0.2.jar</url>
@@ -74,23 +26,11 @@
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xmlparserv2.jar</url>
         </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="sessionFactory/Hibernate" uuid="edc8a6e7-60c4-4bba-9085-b9667c8e3dc2">
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml</remarks>
-      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@//10.248.8.52:1521/orcl</jdbc-url>
-      <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/ojdbc6-12.1.0.2.jar</url>
         </library>
         <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xdb6-12.1.0.2.jar</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xmlparserv2.jar</url>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-java-5.1.35-bin.jar</url>
         </library>
       </libraries>
     </data-source>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.bean.Journal" table="journal" catalog="u20142005034">
+		<id name="journal_id" type="java.lang.Integer">
+			<column name="journal_id"></column>
+			<generator class="increment"></generator>
+		</id>
+		<property name="journal_title" type="java.lang.String">
+			<column name="journal_title" length="20" not-null="false"></column>
+		</property>
+		<property name="ISSN" type="java.lang.String">
+			<column name="ISSN" length="20" not-null="false"></column>
+		</property>
+		<set name="articles" inverse="true" cascade="all">
+			<key column="journal_id"></key>
+			<one-to-many class="com.bean.Article"></one-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

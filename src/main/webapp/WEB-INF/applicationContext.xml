@@ -23,7 +23,7 @@
                     org.hibernate.dialect.MySQLDialect
                 </prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
             </props>
 
         </property>
@@ -49,7 +49,7 @@
         </property>
     </bean>
 
-    <bean id="userService" class="com.service.impl.UserServiceImpl">
+    <bean id="userService" class="com.service.impl.UserServiceImpl" scope="singleton">
         <property name="userDao">
             <ref bean="userDAO"></ref>
         </property>
@@ -62,7 +62,7 @@
         </property>
     </bean>
 
-    <bean id="journalService" class="com.service.impl.JournalServiceImpl">
+    <bean id="journalService" class="com.service.impl.JournalServiceImpl" scope="singleton">
         <property name="journalDAO">
             <ref bean="journalDAO"></ref>
         </property>

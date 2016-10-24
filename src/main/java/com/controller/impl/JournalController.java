@@ -1,6 +1,8 @@
 package com.controller.impl;
 
 import com.bean.Article;
+import com.bean.Journal;
+import com.bean.Journals;
 import com.bean.Paragraph;
 import com.controller.IJournalController;
 import com.service.JournalService;
@@ -31,4 +33,28 @@ public class JournalController implements IJournalController {
     }
 
 
+    @Override
+    public Journals listJournal(int startpoint, int limits) {
+        return null;
+    }
+
+    @Override
+    public void addJournal(int userid, String journal_title, String ISSN) {
+
+    }
+
+    @Override
+    public Journal findJournal(int journal_id) {
+        return null;
+    }
+
+    @Override
+    public void deleteJournal(int journal_id) {
+
+    }
+
+    @Override
+    public void updateJournal(int journal_id, String journal_title, String ISSN) {
+
+    }
 }

@@ -10,7 +10,8 @@ import java.util.List;
 
 @XmlRootElement
 public class Journals {
-    private List journals = new ArrayList<Journal>();
+
+    private List journals;
 
     public Journals(List journals) {
         this.journals = journals;

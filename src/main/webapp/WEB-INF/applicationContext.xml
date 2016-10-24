@@ -67,69 +67,11 @@
             <ref bean="journalDAO"></ref>
         </property>
     </bean>
-<!--
 
-    <bean id="deleteJournalAction" class="com.action.journal.DeleteJournalAction" scope="prototype">
-        <property name="service">
-            <ref bean="journalService"></ref>
-        </property>
-    </bean>
-    <bean id="editJournalAction" class="com.action.journal.EditJournalAction" scope="prototype">
-        <property name="service">
-            <ref bean="journalService"></ref>
-        </property>
-    </bean>
-    <bean id="showArticleAction" class="com.action.journal.ShowArticleAction" scope="prototype">
-        <property name="service">
-            <ref bean="journalService"></ref>
-        </property>
-        <property name="userService">
-            <ref bean="userService"></ref>
-        </property>
-    </bean>
-    <bean id="addParagraphAction" class="com.action.journal.AddParagraph" scope="prototype">
-        <property name="service">
-            <ref bean="journalService"></ref>
-        </property>
-    </bean>
-    <bean id="saveNoteAction" class="com.action.user.saveNoteAction" scope="prototype">
-        <property name="service">
-            <ref bean="userService"></ref>
-        </property>
-    </bean>
-    <bean id="logoutAction" class="com.action.user.LogoutAction" scope="prototype"></bean>
-    <bean id="enrollAction" class="com.action.user.EnrollAction" scope="prototype">
-        <property name="service">
-            <ref bean="userService"></ref>
-        </property>
-    </bean>
-    <bean id="userManageAction" class="com.action.user.UserManageAction" scope="prototype">
-        <property name="journalService">
-            <ref bean="journalService"></ref>
-        </property>
-        <property name="userService">
-            <ref bean="userService"></ref>
-        </property>
-    </bean>
-    <bean id="modifyUserInfoAction" class="com.action.user.ModifyUserInfoAction" scope="prototype">
-        <property name="service">
-            <ref bean="userService"></ref>
-        </property>
-    </bean>
-    <bean id="showParagraphAction" class="com.action.journal.showParagraph" scope="prototype">
-        <property name="service">
-            <ref bean="journalService"></ref>
-        </property>
-    </bean>
-    <bean id="modifyParagraphAction" class="com.action.journal.modifyParagraphAction" scope="prototype">
-        <property name="service">
-            <ref bean="journalService"></ref>
-        </property>
-    </bean>
-    <bean id="deleteParagraphAction" class="com.action.journal.DeleteParagraphAction" scope="prototype">
-        <property name="service">
-            <ref bean="journalService"></ref>
-        </property>
-    </bean>-->
+    <bean id="articleService" class="com.service.impl.ArticleServiceImp"></bean>
+
+    <bean id="chapterService" class="com.service.impl.ChapterServiceImp"></bean>
+
+    <bean id="paragraphService" class="com.service.impl.ParagraphServiceImp"></bean>
 
 </beans>

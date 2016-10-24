@@ -1,8 +1,6 @@
 package com.controller;
 
-import com.bean.Article;
-import com.bean.Journal;
-import com.bean.User;
+import com.bean.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,27 +14,29 @@ import java.util.Set;
 public interface IUserController {
 
     //user
-    public String createUser(String username, String password, String email);
+    public void createUser(String username, String password, String email);
 
-    public void updateUser(int userid, String username, String password, String email, String note);
+    public void updateSelf(int userid, String username, String password, String email, String note);
 
     public User findUser(int userid);
 
     public void deleteUser(int userid);
 
     //note
-    public void saveNote(int userid, String note);
+    public void savePersonalNote(int userid, String note);
 
-    public String findNote(int userid);
+    public String findPersonalNote(int userid);
 
     //paragraph
-    public String findPersonalParagraph(int userid);
+    public void createPersonalParagraph(int userid,int chapter_id,int paragraph_sequence);
 
-    public String updatePersonalParagraph(int userid,int paragraphid,String content);
+    public Paragraphs findPersonalParagraph(int userid);
 
-    public String deletePersonalParagraph(int userid,int paragraphid);
+    public void updatePersonalParagraph(int paragraphid,String content);
+
+    public void deletePersonalParagraph(int paragraphid);
 
     //privilege
-    public String chageUserPrivilege(int managerid,int accessorid,boolean[] privilege);
+    public void chageUserPrivilege(int userid,boolean[] privilege);
 
 }

@@ -33,28 +33,37 @@ public class JournalController implements IJournalController {
     }
 
 
+    @RequestMapping(value = "",method = RequestMethod.GET)
     @Override
     public Journals listJournal(int startpoint, int limits) {
+        //TODO
         return null;
     }
 
+    @RequestMapping(value = "",method = RequestMethod.POST)
     @Override
     public void addJournal(int userid, String journal_title, String ISSN) {
-
+//TODO
     }
 
+    @RequestMapping(value = "{journal_id}",method = RequestMethod.GET)
     @Override
-    public Journal findJournal(int journal_id) {
+    public Journal findJournal(@PathVariable int journal_id) {
+        //TODO
         return null;
     }
 
+    @RequestMapping(value = "{journal_id}",method = RequestMethod.DELETE)
     @Override
-    public void deleteJournal(int journal_id) {
+    public void deleteJournal(@PathVariable int journal_id) {
+//TODO
 
     }
 
+    @RequestMapping(value = "{journal_id}",method = RequestMethod.PUT)
     @Override
-    public void updateJournal(int journal_id, String journal_title, String ISSN) {
+    public void updateJournal(@PathVariable int journal_id,@RequestParam(required = false) String journal_title,@RequestParam(required = false) String ISSN) {
+//TODO
 
     }
 }

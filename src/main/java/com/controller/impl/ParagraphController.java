@@ -5,7 +5,10 @@ import com.controller.IParagraphController;
 import com.service.ParagraphService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by yjy on 16-10-24.
@@ -22,23 +25,31 @@ public class ParagraphController implements IParagraphController{
         this.paragraphService = paragraphService;
     }
 
+    @RequestMapping(value = "",method = RequestMethod.POST)
     @Override
-    public void addParagraph(int userid, int chapter_id, int sequence, String content) {
+    public void addParagraph(@RequestParam int userid,@RequestParam int chapter_id,@RequestParam int sequence, String content) {
+//TODO
 
     }
 
+    @RequestMapping(value = "{paragraph_id}",method = RequestMethod.GET)
     @Override
-    public Paragraph findParagraph(int paragraph_id) {
+    public Paragraph findParagraph(@PathVariable int paragraph_id) {
+        //TODO
         return null;
     }
 
+    @RequestMapping(value = "{paragraph_id}",method = RequestMethod.PUT)
     @Override
-    public void updateParagraph(int paragraph_id, String content) {
+    public void updateParagraph(@PathVariable int paragraph_id,@RequestParam(required = false) String content) {
+//TODO
 
     }
 
+    @RequestMapping(value = "{paragraph_id}",method = RequestMethod.DELETE)
     @Override
-    public void deleteParagraph(int paragraph_id) {
+    public void deleteParagraph(@PathVariable int paragraph_id) {
+//TODO
 
     }
 }

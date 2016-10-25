@@ -5,7 +5,10 @@ import com.controller.IArticleController;
 import com.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by yjy on 16-10-24.
@@ -22,23 +25,31 @@ public class ArticleController implements IArticleController {
         this.articleService = articleService;
     }
 
+    @RequestMapping(value = "",method = RequestMethod.POST)
     @Override
-    public void addAritcle(int journal_id, String article_title, String article_outline) {
+    public void addAritcle(@RequestParam int journal_id,@RequestParam String article_title,@RequestParam String article_outline) {
+//TODO
 
     }
 
+    @RequestMapping(value = "{article_id}",method = RequestMethod.GET)
     @Override
-    public Article findAritcle(int article_id) {
+    public Article findAritcle(@PathVariable int article_id) {
+        //TODO
         return null;
     }
 
+    @RequestMapping(value = "{article_id}",method = RequestMethod.PUT)
     @Override
-    public void updateArticle(int article_id, String article_tiltle, String article_outline) {
+    public void updateArticle(@PathVariable int article_id,@RequestParam(required = false) String article_tiltle,@RequestParam(required = false) String article_outline) {
+//TODO
 
     }
 
+    @RequestMapping(value = "{article_id}",method = RequestMethod.DELETE)
     @Override
-    public void deleteAritcle(int article_id) {
+    public void deleteAritcle(@PathVariable int article_id) {
+//TODO
 
     }
 }

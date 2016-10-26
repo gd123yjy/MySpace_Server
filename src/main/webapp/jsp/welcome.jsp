@@ -1,4 +1,4 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%--<%@ taglib prefix="s" uri="/struts-tags" %>--%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 
@@ -22,7 +22,7 @@
 </head>
 <body id="page">
 
-<s:include value="message.jsp"></s:include>
+<include value="message.jsp"></include>
 
 
 <div class="container">

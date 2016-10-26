@@ -14,8 +14,7 @@ public interface JournalService {
 	//no use
 	public Integer find_first_journal_id();
 
-	public void add_journal(String journal_title, String ISSN,List<String> articles_title,
-			List<String> articles_outline, List<String> chapters_title);
+	public void add_journal(String journal_title, String ISSN);
 
 	public void delete_journal(Integer journal_id);
 

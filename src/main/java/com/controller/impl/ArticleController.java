@@ -1,6 +1,7 @@
 package com.controller.impl;
 
 import com.bean.Article;
+import com.bean.Articles;
 import com.controller.IArticleController;
 import com.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping(value = "/v1/article/")
+@RequestMapping(value = "v1/article/")
 public class ArticleController implements IArticleController {
 
     @Autowired
@@ -51,5 +52,11 @@ public class ArticleController implements IArticleController {
     public void deleteArticle(@PathVariable int article_id) {
 //TODO
 
+    }
+
+    @Override
+    public Articles findArticleOfJournal(int journal_id) {
+        //TODO
+        return null;
     }
 }

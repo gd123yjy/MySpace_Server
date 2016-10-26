@@ -33,6 +33,13 @@ public class JournalDAOImpl implements JournalDAO {
 		
 	}
 
+	@Override
+	public void save_journal(Journal journal) {
+		Session session = sessionFactory.openSession();
+		session.save(journal);
+		session.close();
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> find_all_journal_title() {

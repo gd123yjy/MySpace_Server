@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping(value = "/v1/paragraph/")
+@RequestMapping(value = "v1/paragraph/")
 public class ParagraphController implements IParagraphController{
 
     @Autowired

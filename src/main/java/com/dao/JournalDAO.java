@@ -3,10 +3,12 @@ package com.dao;
 import java.util.List;
 
 import com.bean.Chapter;
+import com.bean.Journal;
 import com.bean.Paragraph;
 
 public interface JournalDAO {
-//	public void save_journal(Journal journal);
+
+	public void save_journal(Journal journal);
 
 //	public void remove_journal(Journal journal);
 

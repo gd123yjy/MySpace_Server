@@ -36,12 +36,12 @@ public class JournalServiceImpl implements JournalService {
 	}
 
 	@Override
-	public void add_journal(String journal_title, String ISSN,List<String> articles_title,
-			List<String> articles_outline, List<String> chapters_title) {
+	public void add_journal(String journal_title, String ISSN/*,List<String> articles_title,
+			List<String> articles_outline, List<String> chapters_title*/) {
 		Journal journal = new Journal();
 		journal.setJournal_title(journal_title);
 		journal.setISSN(ISSN);
-		int cur_chapter_title_index = 0;
+		/*int cur_chapter_title_index = 0;
 		for (int i = 0; i < articles_title.size(); ++i) {
 			Article article = new Article();
 			article.setJournal(journal);
@@ -54,8 +54,8 @@ public class JournalServiceImpl implements JournalService {
 				chapter.setSequence(j);
 				journalDAO.add_chapter(chapter);
 			}
-		}
-		
+		}*/
+		journalDAO.save_journal(journal);
 	}
 
 	@Override

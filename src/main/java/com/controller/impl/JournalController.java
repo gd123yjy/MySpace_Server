@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 @Controller()
-@RequestMapping(value = "/v1/journal/")
+@RequestMapping(value = "v1/journal/")
 public class JournalController implements IJournalController {
 
     private static final long serialVersionUID = 113798207564591586L;

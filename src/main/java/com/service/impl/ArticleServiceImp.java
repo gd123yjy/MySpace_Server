@@ -30,11 +30,6 @@ public class ArticleServiceImp implements ArticleService {
     }
 
     @Override
-    public List<List<Paragraph>> find_paragraph_of_article(Integer chapter_id) {
-        return articleDao.find_paragraph_of_chapter(chapter_id);
-    }
-
-    @Override
     public void update_article(Integer article_id, String article_title,
                                String article_outline) {
         articleDao.update_article(article_id, article_title, article_outline);

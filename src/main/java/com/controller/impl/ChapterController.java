@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping(value = "/v1/chapter/")
+@RequestMapping(value = "v1/chapter/")
 public class ChapterController implements IChapterController{
 
     @Autowired

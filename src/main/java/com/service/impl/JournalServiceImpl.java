@@ -30,23 +30,6 @@ public class JournalServiceImpl implements JournalService {
 		return journalDAO.find_all_journal_title();
 	}
 
-	@SuppressWarnings("rawtypes")
-	@Override
-	public List find_article_of_journal(Integer journal_id) {
-		return journalDAO.find_article_of_journal(journal_id);
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Override
-	public List find_chapter_of_article(Integer article_id) {
-		return journalDAO.find_chapter_of_article(article_id);
-	}
-	
-	@Override
-	public List<List<Paragraph>> find_paragraph_of_article(Integer chapter_id) {
-		return journalDAO.find_paragraph_of_chapter(chapter_id);
-	}
-	
 	@Override
 	public Integer find_first_journal_id() {
 		return journalDAO.find_first_journal_id();
@@ -80,54 +63,5 @@ public class JournalServiceImpl implements JournalService {
 		journalDAO.delete_journal(journal_id);
 		
 	}
-
-	@Override
-	public void update_article(Integer article_id, String article_title,
-			String article_outline) {
-		journalDAO.update_article(article_id, article_title, article_outline);
-		
-	}
-
-	@Override
-	public void add_paragraph(Integer userid, Integer chapter_id, Integer sequence,
-			String content, Double score, Integer score_num) {
-		Chapter chapter = new Chapter();
-		chapter.setChapter_id(chapter_id);
-		User user = new User();
-		user.setUserid(userid);
-		Paragraph paragraph = new Paragraph();
-		paragraph.setChapter(chapter);
-		paragraph.setUser(user);
-		paragraph.setSequence(sequence);
-		paragraph.setContent(content);
-		paragraph.setScore(score);
-		paragraph.setScore_num(score_num);
-		journalDAO.add_paragraph(paragraph);
-	}
-
-	@Override
-	public Paragraph find_paragraph_by_paragraph_id(Integer paragraph_id) {
-		return this.journalDAO.find_paragraph_by_paragraph_id(paragraph_id);
-	}
-
-	
-	@SuppressWarnings("rawtypes")
-	@Override
-	public List find_all_paragraph_of_user(Integer userid) {
-		return this.journalDAO.find_all_paragraph_of_user(userid);
-	}
-
-	@Override
-	public void update_paragraph(Paragraph paragraph) {
-		this.journalDAO.update_paragraph(paragraph);
-		
-	}
-
-	@Override
-	public void delete_paragraph(Paragraph paragraph) {
-		this.journalDAO.delete_paragraph(paragraph);
-		
-	}
-	
 
 }

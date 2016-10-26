@@ -27,14 +27,14 @@ public class ArticleController implements IArticleController {
 
     @RequestMapping(value = "",method = RequestMethod.POST)
     @Override
-    public void addAritcle(@RequestParam int journal_id,@RequestParam String article_title,@RequestParam String article_outline) {
+    public void addArticle(@RequestParam int journal_id, @RequestParam String article_title, @RequestParam String article_outline) {
 //TODO
 
     }
 
     @RequestMapping(value = "{article_id}",method = RequestMethod.GET)
     @Override
-    public Article findAritcle(@PathVariable int article_id) {
+    public Article findArticle(@PathVariable int article_id) {
         //TODO
         return null;
     }
@@ -48,7 +48,7 @@ public class ArticleController implements IArticleController {
 
     @RequestMapping(value = "{article_id}",method = RequestMethod.DELETE)
     @Override
-    public void deleteAritcle(@PathVariable int article_id) {
+    public void deleteArticle(@PathVariable int article_id) {
 //TODO
 
     }

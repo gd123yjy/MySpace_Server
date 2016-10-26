@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.bean.Article;
+import com.bean.Articles;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
@@ -9,12 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public interface IArticleController {
 
     //article
-    public void addAritcle(int journal_id, String article_title, String article_outline);
+    public void addArticle(int journal_id, String article_title, String article_outline);
 
-    public Article findAritcle(int article_id);
+    public Article findArticle(int article_id);
 
     public void updateArticle(int article_id,String article_tiltle,String article_outline);
 
-    public void deleteAritcle(int article_id);
+    public void deleteArticle(int article_id);
+
+    public Articles findArticleOfJournal(int journal_id);
 
 }

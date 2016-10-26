@@ -2,6 +2,8 @@ package com.service;
 
 import com.bean.User;
 
+import java.util.List;
+
 public interface UserService {
 
 	public void save(User user);
@@ -19,4 +21,7 @@ public interface UserService {
 	public String find_note_of_user(Integer userid);
 	
 	public boolean usernameExsit(String username);
+
+	@SuppressWarnings("rawtypes")
+	public List find_all_paragraph_of_user(Integer userid);
 }

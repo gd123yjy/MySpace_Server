@@ -49,16 +49,33 @@
         </property>
     </bean>
 
-    <bean id="userService" class="com.service.impl.UserServiceImpl" scope="singleton">
-        <property name="userDao">
-            <ref bean="userDAO"></ref>
-        </property>
-    </bean>
-
-
     <bean id="journalDAO" class="com.dao.impl.JournalDAOImpl" scope="singleton">
         <property name="sessionFactory">
             <ref bean="sessionFactory"></ref>
+        </property>
+    </bean>
+
+    <bean id="articleDAO" class="com.dao.impl.ArticleDaoImp" scope="singleton">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"></ref>
+        </property>
+    </bean>
+
+    <bean id="chapterDAO" class="com.dao.impl.ChapterDapImp" scope="singleton">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"></ref>
+        </property>
+    </bean>
+
+    <bean id="paragraphDAO" class="com.dao.impl.ParagraphDapImp" scope="singleton">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"></ref>
+        </property>
+    </bean>
+
+    <bean id="userService" class="com.service.impl.UserServiceImpl" scope="singleton">
+        <property name="userDao">
+            <ref bean="userDAO"></ref>
         </property>
     </bean>
 
@@ -68,10 +85,16 @@
         </property>
     </bean>
 
-    <bean id="articleService" class="com.service.impl.ArticleServiceImp"></bean>
+    <bean id="articleService" class="com.service.impl.ArticleServiceImp">
+        <property name="articleDao" ref="articleDAO"/>
+    </bean>
 
-    <bean id="chapterService" class="com.service.impl.ChapterServiceImp"></bean>
+    <bean id="chapterService" class="com.service.impl.ChapterServiceImp">
+        <property name="chapterDao" ref="chapterDAO"/>
+    </bean>
 
-    <bean id="paragraphService" class="com.service.impl.ParagraphServiceImp"></bean>
+    <bean id="paragraphService" class="com.service.impl.ParagraphServiceImp">
+        <property name="paragraphDao" ref="paragraphDAO"/>
+    </bean>
 
 </beans>

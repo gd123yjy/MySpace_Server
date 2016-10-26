@@ -4,7 +4,10 @@ import com.bean.User;
 import com.dao.UserDAO;
 import com.service.UserService;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
+
 	private UserDAO userDao;
 
 	public UserDAO getUserDao()
@@ -75,6 +78,11 @@ public class UserServiceImpl implements UserService {
 		return this.userDao.findUserByUserid(userid);
 	}
 
-	
+
+    @SuppressWarnings("rawtypes")
+    @Override
+    public List find_all_paragraph_of_user(Integer userid) {
+        return this.userDao.find_all_paragraph_of_user(userid);
+    }
 
 }

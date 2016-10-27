@@ -35,7 +35,7 @@ public class JournalController implements IJournalController {
 
     @RequestMapping(value = "",method = RequestMethod.GET)
     @Override
-    public Journals listJournal(int startpoint, int limits) {
+    public @ResponseBody Journals listJournal(int startpoint, int limits) {
         //TODO
         return null;
     }
@@ -48,7 +48,7 @@ public class JournalController implements IJournalController {
 
     @RequestMapping(value = "{journal_id}",method = RequestMethod.GET)
     @Override
-    public Journal findJournal(@PathVariable int journal_id) {
+    public @ResponseBody Journal findJournal(@PathVariable int journal_id) {
         //TODO
         return null;
     }

@@ -61,7 +61,7 @@ public class UserController implements IUserController {
 
     @RequestMapping(value = "{userid}",method = RequestMethod.GET)
     @Override
-    public User findUser(@PathVariable int userid) {
+    public @ResponseBody User findUser(@PathVariable int userid) {
         return userService.find_user_by_userid(userid);
     }
 
@@ -79,7 +79,7 @@ public class UserController implements IUserController {
 
     @RequestMapping(value = "{userid}/note",method = RequestMethod.GET)
     @Override
-    public String findPersonalNote(@PathVariable int userid) {
+    public @ResponseBody String findPersonalNote(@PathVariable int userid) {
         return userService.find_note_of_user(userid);
     }
 
@@ -91,7 +91,7 @@ public class UserController implements IUserController {
 
     @RequestMapping(value = "{userid}/paragraph",method = RequestMethod.GET)
     @Override
-    public Paragraphs findPersonalParagraph(int userid) {
+    public @ResponseBody Paragraphs findPersonalParagraph(int userid) {
         List paragraphs = userService.find_all_paragraph_of_user(userid);
         return new Paragraphs(paragraphs);
     }

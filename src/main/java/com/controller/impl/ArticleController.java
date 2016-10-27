@@ -6,10 +6,7 @@ import com.controller.IArticleController;
 import com.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by yjy on 16-10-24.
@@ -35,7 +32,7 @@ public class ArticleController implements IArticleController {
 
     @RequestMapping(value = "{article_id}",method = RequestMethod.GET)
     @Override
-    public Article findArticle(@PathVariable int article_id) {
+    public @ResponseBody Article findArticle(@PathVariable int article_id) {
         //TODO
         return null;
     }
@@ -55,7 +52,7 @@ public class ArticleController implements IArticleController {
     }
 
     @Override
-    public Articles findArticleOfJournal(int journal_id) {
+    public @ResponseBody Articles findArticleOfJournal(int journal_id) {
         //TODO
         return null;
     }

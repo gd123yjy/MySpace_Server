@@ -13,9 +13,13 @@ import com.bean.Chapter;
 import com.bean.Paragraph;
 import com.dao.JournalDAO;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class JournalDAOImpl implements JournalDAO {
 
+	@Autowired
 	SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {

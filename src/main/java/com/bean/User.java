@@ -1,5 +1,7 @@
 package com.bean;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Set;
 
@@ -11,6 +13,8 @@ public class User {
 	private String email;
 	private String note;
 	private Boolean admin;
+    @XmlElementWrapper(name = "paragraphs")
+    @XmlElement(name = "paragraph")
 	private Set<Paragraph> paragraphs;
 	
 	public User(){}
@@ -70,8 +74,5 @@ public class User {
 	public void setParagraphs(Set<Paragraph> paragraphs) {
 		this.paragraphs = paragraphs;
 	}
-	
-	
-	
 
 }

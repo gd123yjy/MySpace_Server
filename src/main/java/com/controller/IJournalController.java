@@ -15,15 +15,15 @@ import java.util.List;
 public interface IJournalController {
 
     //journals
-    public Journals listJournal(int startpoint,int limits);
+    public Journals listJournal(Integer startpoint,Integer limits);
 
     //journal
-    public void addJournal(int userid,String journal_title, String ISSN);
+    public void addJournal(Integer userid,String journal_title, String ISSN);
 
-    public Journal findJournal(int journal_id);
+    public Journal findJournal(Integer journal_id);
 
-    public void deleteJournal(int journal_id);
+    public void deleteJournal(Integer journal_id);
 
-    public void updateJournal(int journal_id, String journal_title, String ISSN);
+    public void updateJournal(Integer journal_id, String journal_title, String ISSN);
 
 }

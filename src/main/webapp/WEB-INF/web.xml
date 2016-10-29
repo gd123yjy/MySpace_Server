@@ -46,7 +46,7 @@
 
     <!--common-->
     <welcome-file-list>
-        <welcome-file>/jsp/welcome.jsp</welcome-file>
+        <welcome-file>/jsp/TestUserController.jsp</welcome-file>
     </welcome-file-list>
     <session-config>
         <session-timeout>6000</session-timeout>

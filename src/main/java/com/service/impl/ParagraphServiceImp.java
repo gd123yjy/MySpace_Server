@@ -5,13 +5,21 @@ import com.bean.Paragraph;
 import com.bean.User;
 import com.dao.ParagraphDao;
 import com.service.ParagraphService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by yjy on 16-10-24.
  */
+
+@Service
+@Transactional
 public class ParagraphServiceImp implements ParagraphService {
 
-
+    @Autowired
     private ParagraphDao paragraphDao;
 
     public void setParagraphDao(ParagraphDao paragraphDao) {
@@ -50,6 +58,11 @@ public class ParagraphServiceImp implements ParagraphService {
     @Override
     public void delete_paragraph(Paragraph paragraph) {
         this.paragraphDao.delete_paragraph(paragraph);
+    }
+
+    @Override
+    public List find_paragraphs_of_user(Integer user_id) {
+        return paragraphDao.find_paragraphs_of_user(user_id);
     }
 
 }

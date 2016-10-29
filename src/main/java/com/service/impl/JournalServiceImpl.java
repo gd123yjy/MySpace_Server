@@ -9,9 +9,15 @@ import com.bean.Paragraph;
 import com.bean.User;
 import com.dao.JournalDAO;
 import com.service.JournalService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
+@Transactional
 public class JournalServiceImpl implements JournalService {
 
+    @Autowired
 	private JournalDAO journalDAO;
 	
 	public void setJournalDAO(JournalDAO journalDAO) {

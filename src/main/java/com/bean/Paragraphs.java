@@ -9,13 +9,15 @@ import java.util.List;
 
 @XmlRootElement
 public class Paragraphs {
-    private List paragraphs;
+    private List<Paragraph> paragraphs;
 
-    public Paragraphs(List paragraphs) {
+    public Paragraphs(){};
+
+    public Paragraphs(List<Paragraph> paragraphs) {
         this.paragraphs = paragraphs;
     }
 
-    public List getParagraphs() {
+    public List<Paragraph> getParagraphs() {
         return paragraphs;
     }
 

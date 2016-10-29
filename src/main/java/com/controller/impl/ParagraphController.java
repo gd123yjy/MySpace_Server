@@ -24,7 +24,7 @@ public class ParagraphController implements IParagraphController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     @Override
-    public void addParagraph(@RequestParam int userid, @RequestParam int chapter_id, @RequestParam int sequence, String content) {
+    public void addParagraph(@RequestParam Integer userid, @RequestParam Integer chapter_id, @RequestParam Integer sequence, String content) {
 //TODO
 
     }
@@ -33,21 +33,21 @@ public class ParagraphController implements IParagraphController {
     @Override
     public
     @ResponseBody
-    Paragraph findParagraph(@PathVariable int paragraph_id) {
+    Paragraph findParagraph(@PathVariable Integer paragraph_id) {
         //TODO
         return null;
     }
 
     @RequestMapping(value = "{paragraph_id}", method = RequestMethod.PUT)
     @Override
-    public void updateParagraph(@PathVariable int paragraph_id, @RequestParam(required = false) String content) {
+    public void updateParagraph(@PathVariable Integer paragraph_id, @RequestParam(required = false) String content) {
 //TODO
 
     }
 
     @RequestMapping(value = "{paragraph_id}", method = RequestMethod.DELETE)
     @Override
-    public void deleteParagraph(@PathVariable int paragraph_id) {
+    public void deleteParagraph(@PathVariable Integer paragraph_id) {
 //TODO
 
     }

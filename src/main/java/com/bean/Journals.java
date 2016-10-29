@@ -13,6 +13,8 @@ public class Journals {
 
     private List journals;
 
+    public Journals(){};
+
     public Journals(List journals) {
         this.journals = journals;
     }

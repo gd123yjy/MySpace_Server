@@ -2,6 +2,8 @@ package com.service;
 
 import com.bean.Paragraph;
 
+import java.util.List;
+
 /**
  * Created by yjy on 16-10-24.
  */
@@ -15,4 +17,6 @@ public interface ParagraphService {
     public void update_paragraph(Paragraph paragraph);
 
     public void delete_paragraph(Paragraph paragraph);
+
+    public List find_paragraphs_of_user(Integer user_id);
 }

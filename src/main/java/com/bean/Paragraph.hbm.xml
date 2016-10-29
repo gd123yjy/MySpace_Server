@@ -3,7 +3,7 @@
 "http://www.hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.bean.Paragraph" table="paragraph" catalog="u20142005034">
+	<class name="com.bean.Paragraph" table="paragraph" >
 		<id name="paragraph_id" type="java.lang.Integer">
 			<column name="paragraph_id"></column>
 			<generator class="increment"></generator>

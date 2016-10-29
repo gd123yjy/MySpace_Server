@@ -3,14 +3,21 @@ package com.service.impl;
 import com.bean.Paragraph;
 import com.dao.ArticleDao;
 import com.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by yjy on 16-10-24.
  */
+
+@Service
+@Transactional
 public class ArticleServiceImp implements ArticleService {
 
+    @Autowired
     private ArticleDao articleDao;
 
     public void setArticleDao(ArticleDao articleDao) {

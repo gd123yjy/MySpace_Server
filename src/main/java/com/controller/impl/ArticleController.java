@@ -25,34 +25,34 @@ public class ArticleController implements IArticleController {
 
     @RequestMapping(value = "",method = RequestMethod.POST)
     @Override
-    public void addArticle(@RequestParam int journal_id, @RequestParam String article_title, @RequestParam String article_outline) {
+    public void addArticle(@RequestParam Integer journal_id, @RequestParam String article_title, @RequestParam String article_outline) {
 //TODO
 
     }
 
     @RequestMapping(value = "{article_id}",method = RequestMethod.GET)
     @Override
-    public @ResponseBody Article findArticle(@PathVariable int article_id) {
+    public @ResponseBody Article findArticle(@PathVariable Integer article_id) {
         //TODO
         return null;
     }
 
     @RequestMapping(value = "{article_id}",method = RequestMethod.PUT)
     @Override
-    public void updateArticle(@PathVariable int article_id,@RequestParam(required = false) String article_tiltle,@RequestParam(required = false) String article_outline) {
+    public void updateArticle(@PathVariable Integer article_id,@RequestParam(required = false) String article_tiltle,@RequestParam(required = false) String article_outline) {
 //TODO
 
     }
 
     @RequestMapping(value = "{article_id}",method = RequestMethod.DELETE)
     @Override
-    public void deleteArticle(@PathVariable int article_id) {
+    public void deleteArticle(@PathVariable Integer article_id) {
 //TODO
 
     }
 
     @Override
-    public @ResponseBody Articles findArticleOfJournal(int journal_id) {
+    public @ResponseBody Articles findArticleOfJournal(Integer journal_id) {
         //TODO
         return null;
     }

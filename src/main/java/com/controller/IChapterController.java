@@ -8,11 +8,11 @@ import com.bean.Chapter;
 public interface IChapterController {
 
     //chapter
-    public void addChapter(int article_id,String chapter_title );
+    public void addChapter(Integer article_id,String chapter_title );
 
-    public Chapter findChapter(int chapter_id);
+    public Chapter findChapter(Integer chapter_id);
 
-    public void updateChapter(int chapter_id,String chapter_tiltle);
+    public void updateChapter(Integer chapter_id,String chapter_tiltle);
 
-    public void deleteChapter(int chapter_id);
+    public void deleteChapter(Integer chapter_id);
 }

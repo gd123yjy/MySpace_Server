@@ -10,6 +10,8 @@ import java.util.List;
 public class Articles {
     private List articles;
 
+    public Articles(){};
+
     public Articles(List articles) {
         this.articles = articles;
     }

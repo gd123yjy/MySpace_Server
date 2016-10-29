@@ -2,13 +2,19 @@
 <beans
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
         default-lazy-init="true">
+
+    <context:component-scan base-package="com.service"/>
+    <context:component-scan base-package="com.dao"/>
 
     <aop:aspectj-autoproxy/>
 
     <!--log4j to be configured-->
 
+    <!--datasource-->
     <bean id="datasource"
           class="org.apache.commons.dbcp2.BasicDataSource"><!--org.springframework.jdbc.datasource.DriverManagerDataSource-->
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
@@ -20,6 +26,8 @@
         <property name="initialSize" value="2"/>
         <property name="maxTotal" value="5"/>
     </bean>
+
+    <!--session-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 
         <property name="dataSource" ref="datasource"/>
@@ -31,76 +39,23 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
             </props>
-
         </property>
 
         <property name="mappingResources">
-
             <list>
-
                 <value>com/bean/User.hbm.xml</value>
                 <value>com/bean/Journal.hbm.xml</value>
                 <value>com/bean/Article.hbm.xml</value>
                 <value>com/bean/Chapter.hbm.xml</value>
                 <value>com/bean/Paragraph.hbm.xml</value>
-
             </list>
-
         </property>
     </bean>
 
-    <bean id="userDAO" class="com.dao.impl.UserDAOImpl" scope="singleton">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory"></ref>
-        </property>
+    <!--transaction-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
-    <bean id="journalDAO" class="com.dao.impl.JournalDAOImpl" scope="singleton">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory"></ref>
-        </property>
-    </bean>
-
-    <bean id="articleDAO" class="com.dao.impl.ArticleDaoImp" scope="singleton">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory"></ref>
-        </property>
-    </bean>
-
-    <bean id="chapterDAO" class="com.dao.impl.ChapterDapImp" scope="singleton">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory"></ref>
-        </property>
-    </bean>
-
-    <bean id="paragraphDAO" class="com.dao.impl.ParagraphDapImp" scope="singleton">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory"></ref>
-        </property>
-    </bean>
-
-    <bean id="userService" class="com.service.impl.UserServiceImpl" scope="singleton">
-        <property name="userDao">
-            <ref bean="userDAO"></ref>
-        </property>
-    </bean>
-
-    <bean id="journalService" class="com.service.impl.JournalServiceImpl" scope="singleton">
-        <property name="journalDAO">
-            <ref bean="journalDAO"></ref>
-        </property>
-    </bean>
-
-    <bean id="articleService" class="com.service.impl.ArticleServiceImp">
-        <property name="articleDao" ref="articleDAO"/>
-    </bean>
-
-    <bean id="chapterService" class="com.service.impl.ChapterServiceImp">
-        <property name="chapterDao" ref="chapterDAO"/>
-    </bean>
-
-    <bean id="paragraphService" class="com.service.impl.ParagraphServiceImp">
-        <property name="paragraphDao" ref="paragraphDAO"/>
-    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>

@@ -24,28 +24,28 @@ public class ChapterController implements IChapterController{
 
     @RequestMapping(value = "",method = RequestMethod.POST)
     @Override
-    public void addChapter(@RequestParam int article_id,@RequestParam String chapter_title) {
+    public void addChapter(@RequestParam Integer article_id,@RequestParam String chapter_title) {
 //TODO
 
     }
 
     @RequestMapping(value = "{chapter_id}",method = RequestMethod.GET)
     @Override
-    public @ResponseBody Chapter findChapter(@PathVariable int chapter_id) {
+    public @ResponseBody Chapter findChapter(@PathVariable Integer chapter_id) {
         //TODO
         return null;
     }
 
     @RequestMapping(value = "{chapter_id}",method = RequestMethod.PUT)
     @Override
-    public void updateChapter(@PathVariable int chapter_id,@RequestParam(required = false) String chapter_tiltle) {
+    public void updateChapter(@PathVariable Integer chapter_id,@RequestParam(required = false) String chapter_tiltle) {
 //TODO
 
     }
 
     @RequestMapping(value = "{chapter_id}",method = RequestMethod.DELETE)
     @Override
-    public void deleteChapter(@PathVariable int chapter_id) {
+    public void deleteChapter(@PathVariable Integer chapter_id) {
 //TODO
 
     }

@@ -16,27 +16,27 @@ public interface IUserController {
     //user
     public void createUser(String username, String password, String email);
 
-    public void updateSelf(int userid, String username, String password, String email, String note);
+    public void updateSelf(Integer userid, String username, String password, String email, String note);
 
-    public User findUser(int userid);
+    public User findUser(Integer userid);
 
-    public void deleteUser(int userid);
+    public void deleteUser(Integer userid);
 
     //note
-    public void savePersonalNote(int userid, String note);
+    public void savePersonalNote(Integer userid, String note);
 
-    public String findPersonalNote(int userid);
+    public String findPersonalNote(Integer userid);
 
     //paragraph
-    public void createPersonalParagraph(int userid,int chapter_id,int paragraph_sequence);
+    public void createPersonalParagraph(Integer userid,Integer chapter_id,Integer paragraph_sequence);
 
-    public Paragraphs findPersonalParagraph(int userid);
+    public Paragraphs findPersonalParagraph(Integer userid);
 
-    public void updatePersonalParagraph(int paragraphid,String content);
+    public void updatePersonalParagraph(Integer paragraphid,String content);
 
-    public void deletePersonalParagraph(int paragraphid);
+    public void deletePersonalParagraph(Integer paragraphid);
 
     //privilege
-    public void chageUserPrivilege(int userid,boolean[] privilege);
+    public void chageUserPrivilege(Integer userid,boolean[] privilege);
 
 }

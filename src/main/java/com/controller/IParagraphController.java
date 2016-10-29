@@ -8,11 +8,11 @@ import com.bean.Paragraph;
 public interface IParagraphController {
 
     //paragraph
-    public void addParagraph(int userid,int chapter_id,int sequence,String content );
+    public void addParagraph(Integer userid,Integer chapter_id,Integer sequence,String content );
 
-    public Paragraph findParagraph(int paragraph_id);
+    public Paragraph findParagraph(Integer paragraph_id);
 
-    public void updateParagraph(int paragraph_id,String content);
+    public void updateParagraph(Integer paragraph_id,String content);
 
-    public void deleteParagraph(int paragraph_id);
+    public void deleteParagraph(Integer paragraph_id);
 }

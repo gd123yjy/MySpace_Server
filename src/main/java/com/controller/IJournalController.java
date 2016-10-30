@@ -4,7 +4,7 @@ import com.bean.Article;
 import com.bean.Journal;
 import com.bean.Journals;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -26,4 +26,6 @@ public interface IJournalController {
 
     public void updateJournal(Integer journal_id, String journal_title, String ISSN);
 
+    @RequestMapping(value = "{journal_id}",method = RequestMethod.PATCH)
+    void patchJournal(@PathVariable Integer journal_id, @RequestParam(required = false) String journal_title, @RequestParam(required = false) String ISSN);
 }

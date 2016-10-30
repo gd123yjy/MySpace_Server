@@ -24,5 +24,7 @@ public interface JournalDAO {
 	
 	public void delete_journal(Integer journal_id);
 
+    Journal findJournal(Integer journal_id);
+
 //	public void update_journal(Journal journal);
 }

@@ -1,15 +1,23 @@
 package com.bean;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
-@XmlRootElement
+
+@XmlType(name = "article")
 public class Article {
+
+	@XmlTransient
 	private Journal journal;
+    @XmlElement(name = "article_id")
 	private Integer article_id;
-	private String title;
-	private String outline;
-	private Set<Chapter> chapters = new HashSet<Chapter>();
+    @XmlElement(name = "title")
+    private String title;
+    @XmlElement(name = "outline")
+    private String outline;
+    @XmlElementWrapper(name = "chapter")
+    //@XmlElement(name = "chapter")
+    private Set<Chapter> chapters = new HashSet<Chapter>();
 	
 	
 	

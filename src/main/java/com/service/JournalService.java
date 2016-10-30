@@ -2,6 +2,7 @@ package com.service;
 
 import java.util.List;
 
+import com.bean.Journal;
 import com.bean.Paragraph;
 
 public interface JournalService {
@@ -18,4 +19,7 @@ public interface JournalService {
 
 	public void delete_journal(Integer journal_id);
 
+    Journal findJournal(Integer journal_id);
+
+    void update_journal(Journal journal);
 }

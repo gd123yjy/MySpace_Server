@@ -3,18 +3,26 @@ package com.bean;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Set;
 
-@XmlRootElement
+@XmlType(name = "user")
 public class User {
+
+	@XmlElement(name = "userid")
 	private Integer userid;
+    @XmlElement(name = "username")
 	private String username;
+    @XmlElement(name = "password")
 	private String password;
+    @XmlElement(name = "email")
 	private String email;
+    @XmlElement(name = "note")
 	private String note;
+    @XmlElement(name = "admin")
 	private Boolean admin;
-    @XmlElementWrapper(name = "paragraphs")
-    @XmlElement(name = "paragraph")
+    @XmlElementWrapper(name = "paragraph")
+    //@XmlElement(name = "paragraph")
 	private Set<Paragraph> paragraphs;
 	
 	public User(){}

@@ -85,6 +85,7 @@ public class UserController implements IUserController {
     @RequestMapping(value = "{userid}/note",method = RequestMethod.GET)
     @Override
     public String findPersonalNote(@PathVariable Integer userid) {
+        //TODO
         return userService.find_note_of_user(userid);
     }
 
@@ -94,7 +95,7 @@ public class UserController implements IUserController {
         paragraphService.add_paragraph(userid,chapter_id,paragraph_sequence,"",0.0,0);
     }
 
-    @RequestMapping(value = "{userid}/paragraph",method = RequestMethod.GET)
+    @RequestMapping(value = "{userid}/paragraph",method = RequestMethod.GET,headers = {"accept=application/json", "accept=application/xml"})
     @Override
     public Paragraphs findPersonalParagraph(Integer userid) {
         List paragraphs = userService.find_all_paragraph_of_user(userid);

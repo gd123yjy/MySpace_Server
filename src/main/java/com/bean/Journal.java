@@ -1,14 +1,22 @@
 package com.bean;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.HashSet;
 import java.util.Set;
 
-@XmlRootElement
+@XmlType(name = "journal")
 public class Journal {
+	@XmlElement(name = "journal_id")
 	private Integer journal_id;
+	@XmlElement(name = "journal_title")
 	private String journal_title;
+	@XmlElement(name = "ISSN")
 	private String ISSN;
+    @XmlElementWrapper(name = "article")
+	//@XmlElement(name = "article")
 	private Set<Article> articles = new HashSet<Article>();
 	
 	

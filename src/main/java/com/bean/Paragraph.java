@@ -1,16 +1,24 @@
 package com.bean;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
-@XmlRootElement
+@XmlType(name = "paragraph")
 public class Paragraph {
+
+    @XmlElement(name = "paragraph_id")
 	private Integer paragraph_id;
+    @XmlElement(name = "sequence")
 	private Integer sequence;
+    @XmlElement(name = "content")
 	private String content;
+    @XmlElement(name = "score")
 	private Double score;
+    @XmlElement(name = "score_num")
 	private Integer score_num;
+	@XmlTransient
 	private Chapter chapter;
-	private User user;
+    @XmlTransient
+    private User user;
 	
 	public User getUser() {
 		return user;

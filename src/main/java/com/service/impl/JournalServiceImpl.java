@@ -70,4 +70,14 @@ public class JournalServiceImpl implements JournalService {
 		
 	}
 
+	@Override
+	public Journal findJournal(Integer journal_id) {
+		return journalDAO.findJournal(journal_id);
+	}
+
+	@Override
+	public void update_journal(Journal journal) {
+		journalDAO.save_journal(journal);
+	}
+
 }

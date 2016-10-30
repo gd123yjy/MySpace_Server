@@ -85,5 +85,12 @@ public class JournalDAOImpl implements JournalDAO {
 		session.close();
 	}
 
+	@Override
+	public Journal findJournal(Integer journal_id) {
+		Session session = sessionFactory.openSession();
+		Journal journal = (Journal) session.get(Journal.class,journal_id);
+		session.close();
+		return journal;
+	}
 
 }

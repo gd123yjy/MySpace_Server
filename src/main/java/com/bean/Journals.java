@@ -1,29 +1,36 @@
 package com.bean;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
 /**
  * Created by yjy on 16-10-24.
  */
 
-@XmlRootElement
+@XmlRootElement(name = "journalList")
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class Journals {
 
-    private List journals;
+   /* @XmlElementWrapper(name = "journals")
+    @XmlElement(name = "journal")
+    @XmlList*/
+    private List<Journal> journalList;
 
     public Journals(){};
 
-    public Journals(List journals) {
-        this.journals = journals;
+    public Journals(List<Journal> journals) {
+        this.journalList = journals;
     }
 
-    public List getJournals() {
-        return journals;
+    @XmlElementWrapper(name = "journals")
+    @XmlElement(name = "journal")
+    public List<Journal> getJournalList() {
+        return journalList;
     }
 
-    public void setJournals(List journals) {
-        this.journals = journals;
-    }
+    /*@XmlElementWrapper(name = "journals")
+    @XmlElement(name = "journal")
+    public void setJournalList(List<Journal> journalList) {
+        this.journalList = journalList;
+    }*/
 }

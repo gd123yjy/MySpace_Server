@@ -1,9 +1,14 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashSet;
 import java.util.Set;
-@XmlRootElement
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("chapter")
 public class Chapter {
 	private Article article;
 	private Integer chapter_id;

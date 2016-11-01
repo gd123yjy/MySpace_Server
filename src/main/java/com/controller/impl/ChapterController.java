@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by yjy on 16-10-24.
  */
 
-@Controller
+@RestController
 @RequestMapping(value = "v1/chapter/")
 public class ChapterController implements IChapterController{
 
@@ -29,9 +29,9 @@ public class ChapterController implements IChapterController{
 
     }
 
-    @RequestMapping(value = "{chapter_id}",method = RequestMethod.GET)
+    @RequestMapping(value = "{chapter_id}",method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
-    public @ResponseBody Chapter findChapter(@PathVariable Integer chapter_id) {
+    public Chapter findChapter(@PathVariable Integer chapter_id) {
         //TODO
         return null;
     }

@@ -1,5 +1,9 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,16 +11,13 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.HashSet;
 import java.util.Set;
 
-@XmlType(name = "journal")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("Journal")
 public class Journal {
-	@XmlElement(name = "journal_id")
+
 	private Integer journal_id;
-	@XmlElement(name = "journal_title")
 	private String journal_title;
-	@XmlElement(name = "ISSN")
 	private String ISSN;
-    @XmlElementWrapper(name = "article")
-	//@XmlElement(name = "article")
 	private Set<Article> articles = new HashSet<Article>();
 	
 	

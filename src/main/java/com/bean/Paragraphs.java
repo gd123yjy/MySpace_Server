@@ -1,5 +1,8 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
@@ -7,8 +10,10 @@ import java.util.List;
  * Created by yjy on 16-10-24.
  */
 
-@XmlRootElement
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("paragraphs")
 public class Paragraphs {
+
     private List<Paragraph> paragraphs;
 
     public Paragraphs(){};

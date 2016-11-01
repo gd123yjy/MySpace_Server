@@ -1,5 +1,8 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -9,7 +12,8 @@ import java.util.List;
  * Created by yjy on 16-10-26.
  */
 
-@XmlRootElement(name = "articles")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("articles")
 public class Articles {
 
     @XmlElementWrapper(name = "article")

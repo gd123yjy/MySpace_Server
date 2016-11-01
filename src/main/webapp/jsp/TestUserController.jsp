@@ -12,7 +12,7 @@
 </head>
 <body>
 <%
-    response.sendRedirect(request.getContextPath()+"/v1/user/2/note");
+    response.sendRedirect(request.getContextPath()+"/v1/journal");
 %>
 </body>
 </html>

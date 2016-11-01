@@ -1,23 +1,23 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "paragraph")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("paragraph")
 public class Paragraph {
 
-    @XmlElement(name = "paragraph_id")
 	private Integer paragraph_id;
-    @XmlElement(name = "sequence")
 	private Integer sequence;
-    @XmlElement(name = "content")
 	private String content;
-    @XmlElement(name = "score")
 	private Double score;
-    @XmlElement(name = "score_num")
 	private Integer score_num;
-	@XmlTransient
+	@JsonIgnore
 	private Chapter chapter;
-    @XmlTransient
+	@JsonIgnore
     private User user;
 	
 	public User getUser() {
@@ -62,6 +62,5 @@ public class Paragraph {
 	public void setChapter(Chapter chapter) {
 		this.chapter = chapter;
 	}
-	
-	
+
 }

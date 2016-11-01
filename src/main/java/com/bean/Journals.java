@@ -1,5 +1,9 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
@@ -7,13 +11,10 @@ import java.util.List;
  * Created by yjy on 16-10-24.
  */
 
-@XmlRootElement(name = "journalList")
-//@XmlAccessorType(XmlAccessType.FIELD)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("Journals")
 public class Journals {
 
-   /* @XmlElementWrapper(name = "journals")
-    @XmlElement(name = "journal")
-    @XmlList*/
     private List<Journal> journalList;
 
     public Journals(){};
@@ -22,15 +23,11 @@ public class Journals {
         this.journalList = journals;
     }
 
-    @XmlElementWrapper(name = "journals")
-    @XmlElement(name = "journal")
     public List<Journal> getJournalList() {
         return journalList;
     }
 
-    /*@XmlElementWrapper(name = "journals")
-    @XmlElement(name = "journal")
     public void setJournalList(List<Journal> journalList) {
         this.journalList = journalList;
-    }*/
+    }
 }

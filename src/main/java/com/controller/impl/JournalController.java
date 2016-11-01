@@ -42,7 +42,7 @@ public class JournalController implements IJournalController {
         this.articleService = articleService;
     }
 
-    @RequestMapping(value = {"","/"},method = RequestMethod.GET/*,headers = {"accept=application/xml","accept=application/json"}*/)
+    @RequestMapping(value = {"","/"},method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
     public Journals listJournal(@RequestParam(required = false) Integer startpoint,@RequestParam(required = false) Integer limits) {
         //TODO
@@ -57,7 +57,7 @@ public class JournalController implements IJournalController {
         journalService.add_journal(journal_title,ISSN);
     }
 
-    @RequestMapping(value = "{journal_id}",method = RequestMethod.GET,headers = {"accept=application/json", "accept=application/xml"})
+    @RequestMapping(value = "{journal_id}",method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
     public Journal findJournal(@PathVariable Integer journal_id) {
         Journal journal = journalService.findJournal(journal_id);

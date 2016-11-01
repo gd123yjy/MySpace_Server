@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by yjy on 16-10-24.
  */
 
-@Controller
+@RestController
 @RequestMapping(value = "v1/article/")
 public class ArticleController implements IArticleController {
 
@@ -30,9 +30,9 @@ public class ArticleController implements IArticleController {
 
     }
 
-    @RequestMapping(value = "{article_id}",method = RequestMethod.GET)
+    @RequestMapping(value = "{article_id}",method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
-    public @ResponseBody Article findArticle(@PathVariable Integer article_id) {
+    public Article findArticle(@PathVariable Integer article_id) {
         //TODO
         return null;
     }
@@ -51,8 +51,9 @@ public class ArticleController implements IArticleController {
 
     }
 
+    @RequestMapping(value = "",method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
-    public @ResponseBody Articles findArticleOfJournal(Integer journal_id) {
+    public @ResponseBody Articles findArticleOfJournal(@RequestParam Integer journal_id) {
         //TODO
         return null;
     }

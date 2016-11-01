@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by yjy on 16-10-24.
  */
 
-@Controller
+@RestController
 @RequestMapping(value = "v1/paragraph/")
 public class ParagraphController implements IParagraphController {
 
@@ -29,11 +29,9 @@ public class ParagraphController implements IParagraphController {
 
     }
 
-    @RequestMapping(value = "{paragraph_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "{paragraph_id}", method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
-    public
-    @ResponseBody
-    Paragraph findParagraph(@PathVariable Integer paragraph_id) {
+    public Paragraph findParagraph(@PathVariable Integer paragraph_id) {
         //TODO
         return null;
     }

@@ -1,10 +1,14 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@XmlType(name = "article")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("article")
 public class Article {
 
 	@XmlTransient

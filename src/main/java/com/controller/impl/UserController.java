@@ -61,11 +61,11 @@ public class UserController implements IUserController {
         userService.update(user);
     }
 
-    @RequestMapping(value = "{userid}",method = RequestMethod.GET,headers = {"accept=application/json", "accept=application/xml"})
+    @RequestMapping(value = "{userid}",method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
     public User findUser(@PathVariable Integer userid) {
         User user = userService.find_user_by_userid(userid);
-        List paragraphs = paragraphService.find_paragraphs_of_user(userid);
+        List<Paragraph> paragraphs = paragraphService.find_paragraphs_of_user(userid);
         user.setParagraphs(new HashSet<Paragraph>(paragraphs));
         return user;
     }
@@ -95,7 +95,7 @@ public class UserController implements IUserController {
         paragraphService.add_paragraph(userid,chapter_id,paragraph_sequence,"",0.0,0);
     }
 
-    @RequestMapping(value = "{userid}/paragraph",method = RequestMethod.GET,headers = {"accept=application/json", "accept=application/xml"})
+    @RequestMapping(value = "{userid}/paragraph",method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
     public Paragraphs findPersonalParagraph(Integer userid) {
         List paragraphs = userService.find_all_paragraph_of_user(userid);

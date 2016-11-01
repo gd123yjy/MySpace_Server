@@ -1,28 +1,24 @@
 package com.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.Set;
 
-@XmlType(name = "user")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonRootName("user")
 public class User {
 
-	@XmlElement(name = "userid")
 	private Integer userid;
-    @XmlElement(name = "username")
 	private String username;
-    @XmlElement(name = "password")
 	private String password;
-    @XmlElement(name = "email")
 	private String email;
-    @XmlElement(name = "note")
 	private String note;
-    @XmlElement(name = "admin")
 	private Boolean admin;
-    @XmlElementWrapper(name = "paragraph")
-    //@XmlElement(name = "paragraph")
 	private Set<Paragraph> paragraphs;
 	
 	public User(){}

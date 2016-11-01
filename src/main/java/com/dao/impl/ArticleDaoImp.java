@@ -1,5 +1,6 @@
 package com.dao.impl;
 
+import com.bean.Article;
 import com.dao.ArticleDao;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -57,4 +58,30 @@ public class ArticleDaoImp implements ArticleDao {
         query.executeUpdate();
         session.close();
     }
+
+    @Override
+    public void add_article(Article article) {
+        Session session = sessionFactory.openSession();
+        session.save(article);
+        session.close();
+    }
+
+    @Override
+    public Article find_article_by_id(Integer article_id) {
+        Session session = sessionFactory.openSession();
+        Article article = (Article) session.get(Article.class,article_id);
+        session.close();
+        return article;
+    }
+
+    @Override
+    public void delete_article(Integer article_id) {
+        Session session = sessionFactory.openSession();
+        String hql = "delete from Article article where article.article_id = :article_id";
+        Query query = session.createQuery(hql);
+        query.setInteger("article_id", article_id);
+        query.executeUpdate();
+        session.close();
+    }
+
 }

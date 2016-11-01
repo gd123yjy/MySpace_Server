@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.bean.Article;
 import com.bean.Paragraph;
 import com.dao.ArticleDao;
 import com.service.ArticleService;
@@ -20,10 +21,6 @@ public class ArticleServiceImp implements ArticleService {
     @Autowired
     private ArticleDao articleDao;
 
-    public void setArticleDao(ArticleDao articleDao) {
-        this.articleDao = articleDao;
-    }
-
     @SuppressWarnings("rawtypes")
     @Override
     public List find_article_of_journal(Integer journal_id) {
@@ -40,7 +37,27 @@ public class ArticleServiceImp implements ArticleService {
     public void update_article(Integer article_id, String article_title,
                                String article_outline) {
         articleDao.update_article(article_id, article_title, article_outline);
-
     }
+
+    @Override
+    public void add_article(Article article) {
+        articleDao.add_article(article);
+    }
+
+    @Override
+    public Article find_article_by_id(Integer article_id) {
+        return articleDao.find_article_by_id(article_id);
+    }
+
+    @Override
+    public void update_article(Article article) {
+        articleDao.update_article(article.getArticle_id(),article.getTitle(),article.getOutline());
+    }
+
+    @Override
+    public void delete_article(Integer article_id) {
+        articleDao.delete_article(article_id);
+    }
+
 
 }

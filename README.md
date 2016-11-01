@@ -1,5 +1,6 @@
 # ssh
 一个用于创建、维护杂志的网站，fork自jkunlin/ssh
+
 #feature
 - - 1.管理员具有创建删除杂志、编辑杂志构成的权限；
 - - 2.杂志创建时同时确定该杂志由几篇文章构成、每篇文章有多少章节、每一章的标题；
@@ -8,13 +9,21 @@
 - - 5.每个大众参与编辑的段落，系统都将从评分最高的版本中选出3篇，再随机选出2篇，组合成5篇展现给读者；
 - - 6.每个用户有自己专属的笔记板；
 - - 7.每个用户都可以在个人信息管理模块找到自己参与编辑的段落；
+
+
+
+
 #IDE
 已从eclipse导入到idea，生成了.iml文件
+
 #charset
 jkunlin/ssh使用的是GBK，部分文件已被转化为UTF-8，仍有部分是GBK。
+
 #dependence
 使用maven管理
+
 #DB
 数据库使用mysql，打开applicationContext配置文件中的<prop key="hibernate.hbm2ddl.auto">update</prop>即可自动建表
+
 #运行
 服务器初始状态数据库中无任何数据，请自行插入数据方便调试

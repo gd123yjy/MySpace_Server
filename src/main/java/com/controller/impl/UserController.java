@@ -52,6 +52,7 @@ public class UserController implements IUserController {
     @Override
     public void updateSelf(@PathVariable Integer userid,@RequestParam(required = false) String username,@RequestParam(required = false) String password,@RequestParam(required = false) String email,@RequestParam(required = false) String note) {
         //TODO
+        //不给参数的时候不应该用null覆盖原来的值
         User user = new User();
         user.setUserid(userid);
         user.setUsername(username);
@@ -86,6 +87,7 @@ public class UserController implements IUserController {
     @Override
     public String findPersonalNote(@PathVariable Integer userid) {
         //TODO
+        //最好返回标准的json格式
         return userService.find_note_of_user(userid);
     }
 
@@ -122,6 +124,7 @@ public class UserController implements IUserController {
     @RequestMapping(value = "{userid}/privilege",method = RequestMethod.PUT)
     @Override
     public void chageUserPrivilege(@PathVariable Integer userid,@RequestParam boolean[] privilege) {
-//TODO
+        //TODO
+        //暂时不设置权限
     }
 }

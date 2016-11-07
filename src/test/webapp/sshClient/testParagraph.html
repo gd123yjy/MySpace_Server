@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test paragraph</title>
+</head>
+<body>
+<a href="http://127.0.0.1:8080/ssh/v1/paragraph/1/">test get paragraph 1</a>
+<!--failed,privilege denied-->
+<form name="newJournal" method="post" action="http://127.0.0.1:8080/ssh/v1/paragraph">
+    ownerid:<input name="userid" type="text" value="2"><br>
+    chapter_id:<input name="chapter_id" type="text" value="1"><br>
+    sequence:<input name="sequence" type="text" value="2"><br>
+    content:<input name="content" type="text" value="paragraph_test"><br>
+    <input type="submit" value="test create user">
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test paragraph</title>
+</head>
+<body>
+<!--failed,privilege denied-->
+<a href="http://127.0.0.1:8080/ssh/v1/chapter/1/">test get chapter 1</a>
+<!--failed,privilege denied-->
+<form name="newChapter" method="post" action="http://127.0.0.1:8080/ssh/v1/chapter">
+    article_id:<input name="article_id" type="text" value="1"><br>
+    chapter_title:<input name="chapter_title" type="text" value="chapter_title"><br>
+    <input type="submit" value="test create chapter">
+</form>
+</body>
+</html>

@@ -13,7 +13,7 @@
         <intercept-url pattern="/v1/user/{userid}**" access="hasRole('ROLE_USER')" method="GET"/>
         <intercept-url pattern="/v1/user/{userid}/note/**" access="hasRole('ROLE_USER')" method="GET"/>
         <intercept-url pattern="/v1/user/{userid}/paragraph/**" access="hasRole('ROLE_USER')" method="GET"/>
-        <intercept-url pattern="/**" access="hasRole('ROLE_USER'),hasRole('ROLE_ADMIN')"/><!--ROLE_ADMIN,ROLE_USER-->
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/><!--ROLE_ADMIN,ROLE_USER-->
         <!--<intercept-url pattern="/login.jsp*" filters="none" />
         <logout logout-url="/logout.jsp"
                 logout-success-url="/j_spring_security_check" />-->
@@ -24,7 +24,7 @@
         <authentication-manager>
             <authentication-provider>
                 <user-service>
-                    <user name="gd123yjy" password="111111" authorities="ROLE_ADMIN"/>
+                    <user name="gd123yjy" password="111111" authorities="ROLE_USER"/>
                     <user name="liky" password="redhat" authorities="ROLE_USER"/>
                 </user-service>
             </authentication-provider>

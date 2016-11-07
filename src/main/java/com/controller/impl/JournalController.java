@@ -86,6 +86,7 @@ public class JournalController implements IJournalController {
     @Override
     public void patchJournal(@PathVariable Integer journal_id,@RequestParam(required = false) String journal_title,@RequestParam(required = false) String ISSN) {
         //TODO
+        //暂时用update的逻辑代替
         Journal journal = new Journal();
         journal.setJournal_id(journal_id);
         journal.setJournal_title(journal_title);

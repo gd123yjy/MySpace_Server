@@ -7,5 +7,11 @@
 <body>
 <a href="http://127.0.0.1:8080/ssh/v1/user/2">test finduser()</a><br>
 <a href="http://127.0.0.1:8080/ssh/v1/user/2/note">test findnote()</a><br>
+<!--failed,privilege denied-->
+<form name="newJournal" method="post" action="http://127.0.0.1:8080/ssh/v1/user">
+    username:<input name="username" type="text" value="user_test"><br>
+    password:<input name="password" type="password" value="111111"><br>
+    <input type="submit" value="test create user">
+</form>
 </body>
 </html>

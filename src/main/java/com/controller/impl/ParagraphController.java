@@ -25,28 +25,31 @@ public class ParagraphController implements IParagraphController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     @Override
     public void addParagraph(@RequestParam Integer userid, @RequestParam Integer chapter_id, @RequestParam Integer sequence, String content) {
-//TODO
-
+        //TODO
+        //score部分有待完善
+        paragraphService.add_paragraph(userid,chapter_id,sequence,content,0.0,0);
     }
 
     @RequestMapping(value = "{paragraph_id}", method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
     public Paragraph findParagraph(@PathVariable Integer paragraph_id) {
-        //TODO
-        return null;
+        return paragraphService.find_paragraph_by_paragraph_id(paragraph_id);
     }
 
     @RequestMapping(value = "{paragraph_id}", method = RequestMethod.PUT)
     @Override
     public void updateParagraph(@PathVariable Integer paragraph_id, @RequestParam(required = false) String content) {
-//TODO
-
+        Paragraph paragraph = new Paragraph();
+        paragraph.setParagraph_id(paragraph_id);
+        paragraph.setContent(content);
+        paragraphService.update_paragraph(paragraph);
     }
 
     @RequestMapping(value = "{paragraph_id}", method = RequestMethod.DELETE)
     @Override
     public void deleteParagraph(@PathVariable Integer paragraph_id) {
-//TODO
-
+        Paragraph paragraph = new Paragraph();
+        paragraph.setParagraph_id(paragraph_id);
+        paragraphService.delete_paragraph(paragraph);
     }
 }

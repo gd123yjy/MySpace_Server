@@ -52,7 +52,11 @@ public class ArticleController implements IArticleController {
     //@RequestMapping(value = "{article_id}",method = RequestMethod.PUT)
     @Override
     public void updateArticle(@PathVariable Integer article_id,@RequestParam(required = false) String article_tiltle,@RequestParam(required = false) String article_outline) {
-//TODO
+        Article article = new Article();
+        article.setArticle_id(article_id);
+        article.setTitle(article_tiltle);
+        article.setOutline(article_outline);
+        articleService.update_article(article);
     }
 
     @RequestMapping(value = "{article_id}",method = RequestMethod.PUT)

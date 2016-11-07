@@ -91,4 +91,26 @@ public class ChapterDapImp implements ChapterDao {
         session.save(chapter);
         session.close();
     }
+
+    @Override
+    public Chapter find_chapter(Integer chapter_id) {
+        Session session = sessionFactory.openSession();
+        Chapter chapter = (Chapter) session.get(Chapter.class,chapter_id);
+        session.close();
+        return chapter;
+    }
+
+    @Override
+    public void update_chapter(Chapter chapter) {
+        Session session = sessionFactory.openSession();
+        session.update(chapter);
+        session.close();
+    }
+
+    @Override
+    public void delet_chapte(Chapter chapter) {
+        Session session = sessionFactory.openSession();
+        session.delete(chapter);
+        session.close();
+    }
 }

@@ -1,6 +1,7 @@
 package com.bean;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -19,6 +20,7 @@ public class User {
 	private String email;
 	private String note;
 	private Boolean admin;
+	@JsonIgnore
 	private Set<Paragraph> paragraphs;
 	
 	public User(){}

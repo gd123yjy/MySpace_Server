@@ -1,6 +1,7 @@
 package com.bean;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.xml.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.Set;
 public class Article {
 
 	@XmlTransient
+	@JsonIgnore
 	private Journal journal;
     @XmlElement(name = "article_id")
 	private Integer article_id;
@@ -20,7 +22,7 @@ public class Article {
     @XmlElement(name = "outline")
     private String outline;
     @XmlElementWrapper(name = "chapter")
-    //@XmlElement(name = "chapter")
+	@JsonIgnore
     private Set<Chapter> chapters = new HashSet<Chapter>();
 	
 	

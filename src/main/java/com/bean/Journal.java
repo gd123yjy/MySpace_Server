@@ -1,6 +1,7 @@
 package com.bean;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
@@ -18,6 +19,7 @@ public class Journal {
 	private Integer journal_id;
 	private String journal_title;
 	private String ISSN;
+	@JsonIgnore
 	private Set<Article> articles = new HashSet<Article>();
 	
 	

@@ -1,19 +1,25 @@
 package com.bean;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.HashSet;
 import java.util.Set;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @JsonRootName("chapter")
 public class Chapter {
+
+	@XmlTransient
+	@JsonIgnore
 	private Article article;
 	private Integer chapter_id;
 	private String title;
 	private Integer sequence;
+	@JsonIgnore
 	private Set<Paragraph> paragraphs = new HashSet<Paragraph>();
 	
 	public Article getArticle() {

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.bean.Article" table="article">
+	<class name="com.bean.Article" table="article" lazy="false">
 		<id name="article_id" type="java.lang.Integer">
 			<column name="article_id"></column>
 			<generator class="identity"></generator>

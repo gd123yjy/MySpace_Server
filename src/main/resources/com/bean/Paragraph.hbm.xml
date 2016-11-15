@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.bean.Paragraph" table="paragraph" >
+	<class name="com.bean.Paragraph" table="paragraph" lazy="false">
 		<id name="paragraph_id" type="java.lang.Integer">
 			<column name="paragraph_id"></column>
 			<generator class="identity"></generator>

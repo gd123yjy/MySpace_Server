@@ -15,8 +15,10 @@ public class Paragraph {
 	private String content;
 	private Double score;
 	private Integer score_num;
+	@XmlTransient
 	@JsonIgnore
 	private Chapter chapter;
+	@XmlTransient
 	@JsonIgnore
     private User user;
 	

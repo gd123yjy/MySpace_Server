@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
     <!--user是oracle关键字所以表名不能是user-->
-	<class name="com.bean.User" table="Paragraph_user" >
+	<class name="com.bean.User" table="Paragraph_user" lazy="false">
 		<id name="userid" type="java.lang.Integer">
 			<column name="userid"></column>
 			<!--oracle不支持increase-->

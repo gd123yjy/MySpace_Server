@@ -21,7 +21,7 @@ import java.util.Set;
  */
 
 @RestController
-@RequestMapping(value = "v1/user/")
+@RequestMapping(value = "v1/user")
 public class UserController implements IUserController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class UserController implements IUserController {
         this.paragraphService = paragraphService;
     }
 
-    @RequestMapping(value = "",method = RequestMethod.POST)
+    @RequestMapping(value = {"","/"},method = RequestMethod.POST)
     @Override
     public void createUser(@RequestParam String username,@RequestParam String password,@RequestParam(required = false) String email) {
         User user = new User();

@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "v1/chapter/")
+@RequestMapping(value = "v1/chapter")
 public class ChapterController implements IChapterController{
 
     @Autowired
@@ -25,7 +25,7 @@ public class ChapterController implements IChapterController{
         this.chapterService = chapterService;
     }
 
-    @RequestMapping(value = "",method = RequestMethod.POST)
+    @RequestMapping(value = {"","/"},method = RequestMethod.POST)
     @Override
     public void addChapter(@RequestParam Integer article_id,@RequestParam String chapter_title) {
         Chapter chapter = new Chapter();

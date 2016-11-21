@@ -36,7 +36,9 @@ public class ArticleController implements IArticleController {
         articleService.add_article(article);
     }
 
-    @RequestMapping(value = "",method = RequestMethod.POST)
+    // TODO: 16-11-21
+    //failed
+    @RequestMapping(value = {"","/"},method = RequestMethod.POST)
     @Override
     public void addArticle(@RequestBody Article article) {
         articleService.add_article(article);

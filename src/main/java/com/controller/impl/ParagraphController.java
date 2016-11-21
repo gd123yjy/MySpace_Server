@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping(value = "v1/paragraph/")
+@RequestMapping(value = "v1/paragraph")
 public class ParagraphController implements IParagraphController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class ParagraphController implements IParagraphController {
         this.paragraphService = paragraphService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = {"","/"}, method = RequestMethod.POST)
     @Override
     public void addParagraph(@RequestParam Integer userid, @RequestParam Integer chapter_id, @RequestParam Integer sequence, String content) {
         //TODO

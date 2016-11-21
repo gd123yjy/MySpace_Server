@@ -9,5 +9,13 @@
 <!--failed-->
 <a href="http://127.0.0.1:8080/ssh/v1/article/1/">test get article 1</a><br>
 
+<div id="div1"></div>
+
+<input type="button" value="addArticle" onclick="function addArticle_ajax() {
+  $.post('http://127.0.0.1:8080/ssh/v1/article',{journal_id:1,
+      article_title:'article_title',
+      article_outline:'article_outline'});
+}">
+
 </body>
 </html>

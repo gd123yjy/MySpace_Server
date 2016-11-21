@@ -1,6 +1,6 @@
 <!-- Hibernate Mapping DTD.
 
-<!DOCTYPE hibernate-mapping PUBLIC 
+<!DOCTYPE unneeded.hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
@@ -912,7 +912,7 @@ mapping associations to classes with composite ids. -->
 	<!ATTLIST column not-null (true|false) #IMPLIED>		 	<!-- default: false (except for id properties) -->
 	<!ATTLIST column unique (true|false) #IMPLIED>			 	<!-- default: false (except for id properties) -->
 	<!ATTLIST column unique-key CDATA #IMPLIED>					<!-- default: no unique key -->
-	<!ATTLIST column sql-type CDATA #IMPLIED>					<!-- override default column type for hibernate type -->
+	<!ATTLIST column sql-type CDATA #IMPLIED>					<!-- override default column type for unneeded.hibernate type -->
 	<!ATTLIST column index CDATA #IMPLIED>
 	<!ATTLIST column check CDATA #IMPLIED>						<!-- default: no check constraint -->
     <!ATTLIST column default CDATA #IMPLIED>                    <!-- default: no default value -->

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--session-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+
+        <property name="dataSource" ref="datasource"/>
+        <!--
+        <property name="mappingLocations">
+            <value>classpath:unneeded.hibernate/unneeded.hibernate.cfg.xml</value>
+        </property>
+        -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.MySQLDialect
+                </prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+
+        <property name="mappingResources">
+            <list>
+                <value>com/bean/User.hbm.xml</value>
+                <value>com/bean/Journal.hbm.xml</value>
+                <value>com/bean/Article.hbm.xml</value>
+                <value>com/bean/Chapter.hbm.xml</value>
+                <value>com/bean/Paragraph.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+</beans>

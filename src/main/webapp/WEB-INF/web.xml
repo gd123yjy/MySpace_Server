@@ -32,6 +32,8 @@
             /WEB-INF/dispatcher-servlet.xml
             classpath:spring/applicationContext.xml
             classpath:spring/security.xml
+            classpath:spring/hibernateContext.xml
+            classpath:spring/transactionContext.xml
         </param-value>
     </context-param>
     <listener>

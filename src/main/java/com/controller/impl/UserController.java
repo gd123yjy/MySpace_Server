@@ -65,6 +65,8 @@ public class UserController implements IUserController {
     @RequestMapping(value = "{userid}",method = RequestMethod.GET,headers = {"accept=application/json"})
     @Override
     public User findUser(@PathVariable Integer userid) {
+        // TODO: 16-11-20  
+        //what if user==null,catch exception or use "if" statement?
         User user = userService.find_user_by_userid(userid);
         List<Paragraph> paragraphs = paragraphService.find_paragraphs_of_user(userid);
         user.setParagraphs(new HashSet<Paragraph>(paragraphs));

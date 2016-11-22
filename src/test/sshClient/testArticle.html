@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>test paragraph</title>
+
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        function addArticle_ajax() {
+            /*
+             $.post('http://127.0.0.1:8080/ssh/v1/article',{journal_id:1,
+             article_title:'article_title',
+             article_outline:'article_outline'});
+             */
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://127.0.0.1:8080/ssh/v1/article', true);
+            //because of cors policy,I need to send pre-request before sending complex post request
+            //using any self-defined header to declare pre request
+            xhr.setRequestHeader('pre-request','cors pre request');
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send({journal_id:1,
+                article_title:'article_title',
+                article_outline:'article_outline'});
+
+            $('#div1').html('<p>send finished!</p>');
+        }
+    </script>
 </head>
 <body>
 <a href="http://127.0.0.1:8080/ssh/v1/article?journal_id=1">test get all article of journal 1</a><br>
 <!--failed-->
 <a href="http://127.0.0.1:8080/ssh/v1/article/1/">test get article 1</a><br>
 
-<div id="div1"></div>
+<div id="div1"></div><br>
 
-<input type="button" value="addArticle" onclick="function addArticle_ajax() {
-  $.post('http://127.0.0.1:8080/ssh/v1/article',{journal_id:1,
-      article_title:'article_title',
-      article_outline:'article_outline'});
-}">
+<input type="button" value="addArticle" onclick="addArticle_ajax()">
 
 </body>
 </html>

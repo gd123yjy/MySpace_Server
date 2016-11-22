@@ -3,9 +3,11 @@
         xmlns="http://www.springframework.org/schema/security"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:beans="http://www.springframework.org/schema/beans"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
         xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- Spring Security采用就近原则,有多个约束时,从上至下只要找到第一条满足就返回,因此因该将最严格的约束放在最前面,而将最宽松的约束放在最后面.auto-config属性可以让spring security为我们自动配置几种常用的权限控制机制，包括form,anonymous, rememberMe等。当然你也可以手工配置。-->
     <http auto-config="true">
@@ -44,4 +46,16 @@
         </authentication-provider>
     </authentication-manager>-->
 
+    <mvc:cors>
+
+        <!--http://localhost, http://127.0.0.1-->
+        <!--allowed-headers="header1, header2, header3, pre-request"
+                     exposed-headers="header1, header2" allow-credentials="false"
+                     allowed-methods="GET, PUT, POST, DELETE"-->
+        <mvc:mapping path="/v1/**"
+                     allowed-origins="*"
+                     allowed-headers="pre-request"
+                     max-age="3600"/>
+
+    </mvc:cors>
 </beans:beans>
